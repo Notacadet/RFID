@@ -15,7 +15,7 @@ class Header {
 		<label for=show-menu class=show-menu>Show Menu</label>
 		<input type=checkbox id=show-menu role=button>
 		<ul id=menu>
-		<li><a href=#>Home</a></li>
+		<li><a href=home.php>Home</a></li>
 		<li><a href=#>Hand Receipts</a></li>
 		<li><a href=searchPage.php>Search</a></li>
 		<li><a href=makeAndModelPage.php>Makes and Models</a></li>

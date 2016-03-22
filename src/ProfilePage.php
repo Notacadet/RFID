@@ -3,9 +3,10 @@
 	//include_once 'Make.php';
 	
 	$rC = new RfidController();
-	$rC->printHTMLHEADER();
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
 	$prof = $rC->getNewProf();
 	$prof->generateNewProfileForm();
-	$rC->printHTMLFOOTER();
-	
+	$footer = $rC->getNewFooter();
+	$footer->printHTMLFooter();	
 ?>

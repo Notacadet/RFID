@@ -3,6 +3,6 @@
 
 	$modelName = $_POST['modelName'];	
 	$rC = new RfidController();
-	//$nM = Make($makes);
-	$rC->selectModel($modelName);
+	$model = $rC->getNewModel();
+	$model->selectModel($modelName);
 ?>

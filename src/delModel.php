@@ -3,6 +3,6 @@
 
 	$modelName = $_POST['modelName'];	
 	$rC = new RfidController();
-	//$nM = Make($makes);
-	$rC->deleteModel($modelName);
+	$model = $rC->getNewModel();
+	$model->deleteModel($modelName);
 ?>

@@ -5,7 +5,7 @@ include 'Model.php';
 include 'Nomenclature.php';
 include 'Profile.php';
 include 'Footer.php';
-
+include 'RFID.php';
 
 class RfidController
  {
@@ -45,9 +45,12 @@ class RfidController
 	public function getNewNomenclature(){
 		return new Nomenclature;
 	}
-	public function getnewProf(){
+	public function getNewProf(){
 		return new Profile;
 	}	
+	public function getNewRfid(){
+		return new Rfid;
+	}
  };
  ?>
    

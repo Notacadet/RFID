@@ -3,9 +3,11 @@
 	//include_once 'Make.php';
 	
 	$rC = new RfidController();
-	$rC->printHTMLHEADER();
-	$rfid = $rC->getNewrfid();	
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
+	$rfid = $rC->getNewRfid();	
 	$rfid->generateSelectrfidForm();
-	$rC->printHTMLFOOTER();
+	$footer = $rC->getNewFooter();
+	$footer->printHTMLFooter();	
 	
 ?>

@@ -17,7 +17,7 @@ class Header {
 		<ul id=menu>
 		<li><a href=#>Home</a></li>
 		<li><a href=#>Hand Receipts</a></li>
-		<li><a href=#>Search</a></li>
+		<li><a href=searchPage.php>Search</a></li>
 		<li><a href=makeAndModelPage.php>Makes and Models</a></li>
 		<li><a href=ProfilePage.php>Profiles</a></li>
 		</ul>");

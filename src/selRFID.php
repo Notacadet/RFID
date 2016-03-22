@@ -4,5 +4,6 @@
 	$serial = $_POST['serial'];
 	$rC = new RfidController();
 	//$nM = Make($makes);
-	$rC->selectRFID($rfid, $serial);
+	$Rfid = $rC->getNewRfid();
+	$Rfid->selectRFID($rfid, $serial);
 ?>

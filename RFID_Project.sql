@@ -11,8 +11,8 @@
 
 
 ### Create Database
-DROP DATABASE IF EXISTS RFID_Database;
-CREATE DATABASE RFID_Database;
+#DROP DATABASE IF EXISTS RFID_Database;
+#CREATE DATABASE RFID_Database;
 USE RFID_Database;
 
 ### Create Primary Tables

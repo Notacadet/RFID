@@ -3,10 +3,16 @@
 	//include_once 'Make.php';
 	
 	$rC = new RfidController();
-	$rC->printHTMLHEADER();
-	$prof = $rC->selectProfile();
-	//$prof->generateNewProfileForm();
+	
+	
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
+
+	$prof = $rC->getNewProf();
+	$prof->selectProfile();
 	//need to add the capability to show all profiles upon landing on this page and a link back to profilepage.php
-	$rC->printHTMLFOOTER();
+	$footer = $rC->getNewFooter();
+	$footer->printHTMLFooter();	
+
 	
 ?>

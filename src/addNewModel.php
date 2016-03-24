@@ -5,6 +5,6 @@
 	$makeName = $_POST['makeName'];
 	$nomName = $_POST['nomName'];
 	$rC = new RfidController();
-	//$nM = Make($makes);
-	$rC->insertModel($modelName,$makeName,$nomName);
+	$model = $rC->getNewModel();
+	$model->insertModel($modelName,$makeName,$nomName);
 ?>

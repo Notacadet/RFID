@@ -3,5 +3,7 @@
 
 	$nomName = $_POST['nomName'];	
 	$rC = new RfidController();
-	$rC->selectNomenclature($nomName);
+	$nom = $rC->getNewNomenclature();
+	$nom->selectNomenclature($nomName);
+
 ?>

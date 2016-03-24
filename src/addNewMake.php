@@ -3,6 +3,7 @@
 
 	$makeName = $_POST['makeName'];	
 	$rC = new RfidController();
-	//$nM = Make($makes);
-	$rC->insertMake($makeName);
+	$make = $rC->getNewMake();
+	$make->insertMake($makeName);
+
 ?>

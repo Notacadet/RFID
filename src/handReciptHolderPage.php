@@ -7,7 +7,7 @@
 	
 	$rC = new RfidController();
 	//$hrhelper=new handReciepts
-	$rC->printHTMLHeader();
+	//$rC->printHTMLHeader();
 	//$rC->selectHandReciept();
 	
 	//Connection to the database

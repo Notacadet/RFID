@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `Locations`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE Locations (
     location_id INT(2) COLLATE UTF8_UNICODE_CI NOT NULL auto_increment,
-    roomNumber VARCHAR(4) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
+    roomNumber VARCHAR(10) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     created_at DATE DEFAULT NULL,
     updated_at DATE DEFAULT NULL,
     delete_Boolean tinyint default NULL,
@@ -190,4 +190,3 @@ CREATE TABLE items (
 	PRIMARY KEY (items_id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
 /*!40101 SET character_set_client = @saved_cs_client */;
-	

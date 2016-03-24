@@ -1,14 +1,10 @@
 <?php 
 	include 'RfidController.php';
 	//include_once 'Make.php';
-	//include_once 'handReciepts.php';
-	
-	
 	
 	$rC = new RfidController();
-	//$hrhelper=new handReciepts
-	//$rC->printHTMLHeader();
-	//$rC->selectHandReciept();
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
 	
 	//Connection to the database
 	$servername = "localhost";

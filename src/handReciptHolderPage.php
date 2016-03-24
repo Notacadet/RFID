@@ -25,18 +25,22 @@
 	$result = $conn->query($nameInfo);
 	$nameArray= array();
 	
+	//<table border="1"> 
 	if ($result -> num_rows > 0 ){
 		//output data of each row into the Array  
 		while ($row=$result->fetch_assoc()){
-			$nameArray[]= (string)$row;
+			//$nameArray[]= (string)$row;
+			$holder=implode(" ",$row);
+			echo "<br>";
+			echo "<td>"."<a href=https://www.google.com>$holder</a>"."<br>"."</td>"; 
 		};
 	}
 	
 	//Print out names in the Array as hyperlinks
-	foreach($nameArray as $value){
-		//$holder=
-		echo "<a href=https://www.google.com>$value</a>";
-	}	
+	//foreach($nameArray as $value){
+		//$holder=(string)$value
+		//echo "<a href=https://www.google.com>$value</a>";
+	//}	
 	
 	$rC->printHTMLFOOTER();
 	

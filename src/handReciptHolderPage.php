@@ -1,14 +1,10 @@
 <?php 
 	include 'RfidController.php';
 	//include_once 'Make.php';
-	//include_once 'handReciepts.php';
-	
-	
 	
 	$rC = new RfidController();
-	//$hrhelper=new handReciepts
-	$rC->printHTMLHeader();
-	//$rC->selectHandReciept();
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
 	
 	//Connection to the database
 	$servername = "localhost";
@@ -25,18 +21,22 @@
 	$result = $conn->query($nameInfo);
 	$nameArray= array();
 	
+	//<table border="1"> 
 	if ($result -> num_rows > 0 ){
 		//output data of each row into the Array  
 		while ($row=$result->fetch_assoc()){
-			$nameArray[]= (string)$row;
+			//$nameArray[]= (string)$row;
+			$holder=implode(" ",$row);
+			echo "<br>";
+			echo "<td>"."<a href=https://www.google.com>$holder</a>"."<br>"."</td>"; 
 		};
 	}
 	
 	//Print out names in the Array as hyperlinks
-	foreach($nameArray as $value){
-		//$holder=
-		echo "<a href=https://www.google.com>$value</a>";
-	}	
+	//foreach($nameArray as $value){
+		//$holder=(string)$value
+		//echo "<a href=https://www.google.com>$value</a>";
+	//}	
 	
 	$rC->printHTMLFOOTER();
 	

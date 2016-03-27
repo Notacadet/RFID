@@ -2,12 +2,12 @@
 //include_once 'RfidController.php';
 
 class Model{
-	
+
 	public function generateNewModelForm(){
-		print(" <form action = addNewModel.php method=post>
-			New Model: <input name=modelName type=text ><br>
-			Make:<input name=makeName type=text ><br>
-			Nomenclature:<input name=nomName type=text ><br>
+		print(" <br><br><br><br><br><br><form action = addNewModel.php method=post>
+			New Model: <input name=modelName type=text id='model'>
+			Make:<input name=makeName type=text id='make' >
+			Nomenclature:<input name=nomName type=text id='nomenclature' ><br>
 				  <input value=Submit Data type=Submit>
 		</form>
 		");
@@ -37,7 +37,7 @@ class Model{
 	//CRUD Sequence for Model
 	public function insertModel($inModel,$inMake,$inCategory){//doesn't handle photos now
 		$conn = RfidController::connect();
-		$sql = "INSERT INTO `models` (`model_Name`,`make_id`,`nom_id`,`created_at`, `updated_at`) VALUES ($inModel,(SELECT make_id FROM makes WHERE makeName = '$inMake'),(SELECT nomenclature_id FROM nomenclature WHERE nomenclature_Name = '$inCategory') ,CURDATE(),CURDATE())";
+		$sql = "INSERT INTO models (model_Name,make_id,nom_id,created_at, updated_at, delete_Boolean) VALUES ('$inModel',(SELECT make_id FROM makes WHERE makeName = '$inMake'),(SELECT nomenclature_id FROM nomenclature WHERE nomenclature_Name = '$inCategory') ,CURDATE(),CURDATE(),'0')";
 		$result = $conn->query($sql);
 		if(!$result){
 				die("Didn't Work " . mysqli_error($conn));

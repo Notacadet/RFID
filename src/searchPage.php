@@ -5,9 +5,11 @@
 	$rC = new RfidController();
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
-	$rfid = $rC->getNewRfid();	
-	$rfid->generateSelectrfidForm();
+	$item = $rC->getNewItem();	
+	$item->generateSelectItemForm();
+	$item->printItem();
 	$footer = $rC->getNewFooter();
-	$footer->printHTMLFooter();	
+	$footer->printHTMLFooter();
+
 	
 ?>

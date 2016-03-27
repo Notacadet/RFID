@@ -6,11 +6,8 @@
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
 
-	$make = $rC->getNewMake();
-	$make->generateNewMakeForm();
-	$make->generateSelectMakeForm();
-	$make->generateUpdateMakeForm();
-	$make->generateDeleteMakeForm();
+	$user = $rC->getNewUser();
+	$user->generateNewUserForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
 

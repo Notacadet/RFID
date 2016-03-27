@@ -6,7 +6,7 @@ class Header {
 		<html lang=en>
 		<head>
 		<meta charset=UTF-8>
-		<title>EAMS</title>
+		<title>EECS Asset Management System</title>
 		<meta name=viewport content='width=device-width, initial-scale=1'>
 		<link rel=stylesheet href=navMenu.css>
 		</head>
@@ -15,14 +15,18 @@ class Header {
 		<label for=show-menu class=show-menu>Show Menu</label>
 		<input type=checkbox id=show-menu role=button>
 		<ul id=menu>
-		<li><a href=home.php>Home</a></li>
-		<li><a href=#>Hand Receipts</a></li>
-		<li><a href=searchPage.php>Search</a></li>
-		<li><a href=makeAndModelPage.php>Makes and Models</a></li>
-		<li><a href=ProfilePage.php>Profiles</a></li>
+		<li><a href=homepage.php>Home</a></li>
+		<li><a href=handReciptHolderPage.php>Hand Receipts</a></li>
+		<li><a href=liveItem.php>Search by Item</a></li>
+		<li><a href=liveMakeAndModel.php>Search by Make and Model</a></li>
+		<li><a href=liveUser.php>Search User</a></li>
+		<li><a href=insertModelPage.php>Create a Make and a Model</a></li>
+		<li><a href=insertUserPage.php>Create User</a></li>
+		<li><a href=#>Latest Update</a></li>
+		<li><a href=#liveItem.php>Create Item</a></li>
+
 		</ul>");
 	}
 }
-
 ?>
 

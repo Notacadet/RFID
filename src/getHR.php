@@ -6,25 +6,22 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
-
 table, td, th {
     border: 1px solid black;
     padding: 10px;
 }
-
 th {text-align: left;}
 </style>
 </head>
 <body>
 <?php
-
 class handReceipt{
 	
 	public function createHR($selectedName){
 		//$conn = connect();
 		$servername = "localhost";
-		$username = "evasung";
-		$password = "hello";
+		$username = "root";
+		$password = "sqldba";
 		$dbname = "rfid_database";
 		$conn = new mysqli($servername,$username,$password,$dbname);
 		if ($conn->connect_error) {
@@ -38,7 +35,6 @@ class handReceipt{
 			die("Didn't Work " . mysqli_error($conn));
 		}
 		mysqli_select_db($conn,"rfid_database");
-
 		// output data of each row
 		echo "<table>
 		<tr>
@@ -69,11 +65,8 @@ class handReceipt{
 	
 	
 }
-
 $testObject = new handReceipt();
-
 $testObject->createHR('in.Turned@usma.edu');
-
 	
 ?>
 </body>

@@ -21,8 +21,8 @@ class RfidController
  	//it seems to not want instance or field variables holding the results of functions...or something like that. 
  	public static function connect(){//execute to establish connectivity to the database.
 		$servername = "localhost"; //default username and passwords for dev/test environments
-		$username = "root";
-		$password = "sqldba";
+		$username = "evasung";
+		$password = "hello";
 		$dbname = "rfid_database";
 		$conn = new mysqli($servername,$username,$password,$dbname);
 		if ($conn->connect_error) {

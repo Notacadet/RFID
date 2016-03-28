@@ -32,7 +32,7 @@
 		while ($row=$result->fetch_assoc()){
 			//$nameArray[]= (string)$row;
 			$holder=implode(" ",$row);
-			echo "<br>"."<td>";
+			echo "<br>"."<br>"."<td>";
 			echo "<a href='nameToEmail.php?fn=$holder'> $holder</a>"."<br>"."</td>"; 
 		};
 	}

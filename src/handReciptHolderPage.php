@@ -1,25 +1,28 @@
 
 <?php 
 	include 'RfidController.php';
-	//include_once 'Make.php';
+	include 'getHR.php';
 	
 	$rC = new RfidController();
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
 	
 	//Connection to the database
-	$servername = "localhost";
-	$username = "evasung";
-	$password = "hello";
-	$dbname = "rfid_database";
-	$conn = new mysqli($servername,$username,$password,$dbname);
-	if ($conn->connect_error) {
-	   die("Connection failed: " . $conn->connect_error);
-	}
+	//$servername = "localhost";
+	//$username = "evasung";
+	//$password = "hello";
+	//$dbname = "rfid_database";
+	//$conn = new mysqli($servername,$username,$password,$dbname);
+	//if ($conn->connect_error) {
+	 //  die("Connection failed: " . $conn->connect_error);
+	//}
+	$conn = RfidController::connect();//THIS WORKS
+
 	
 	//pulling data from the database 
-	$nameInfo= "SELECT firstName,lastName FROM users";
+	$nameInfo= "SELECT firstName,lastName FROM users ORDER BY lastName ASC";
 	$result = $conn->query($nameInfo);
+	
 	$nameArray= array();
 	
 	//<table border="1"> 
@@ -29,7 +32,7 @@
 			//$nameArray[]= (string)$row;
 			$holder=implode(" ",$row);
 			echo "<br>"."<td>";
-			echo "<a href="getHR.php?name=$holder">$holder</a>"."<br>"."</td>"; 
+			echo "<a href='nameToEmail.php?fn=$holder'> $holder</a>"."<br>"."</td>"; 
 		};
 	}
 	
@@ -38,6 +41,10 @@
 		//$holder=(string)$value
 		//echo "<a href=https://www.google.com>$value</a>";
 	//}	
+	
+	
+	
+	
 	
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
@@ -89,4 +96,3 @@
 		
 		
 
-	

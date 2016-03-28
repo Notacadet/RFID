@@ -2,6 +2,7 @@
 class Header {
 
 	public function printHTMLHeader(){
+		print'<b id="logout"><a href="logout.php">Log Out</a></b>';
 		print("<!doctype html>
 		<html lang=en>
 		<head>
@@ -15,7 +16,7 @@ class Header {
 		<label for=show-menu class=show-menu>Show Menu</label>
 		<input type=checkbox id=show-menu role=button>
 		<ul id=menu>
-		<li><a href=homepage.php>Home</a></li>
+		<li><a href=home.php>Home</a></li>
 		<li><a href=handReciptHolderPage.php>Hand Receipts</a></li>
 		<li><a href=liveItem.php>Search by Item</a></li>
 		<li><a href=liveMakeAndModel.php>Search by Make and Model</a></li>

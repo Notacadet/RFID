@@ -1,20 +1,19 @@
 
 <?php
-include('session.php');
+
 include 'RfidController.php';
 //include_once 'Make.php';
 
 $rC = new RfidController();
 $header = $rC->getNewHeader();
 $header->printHTMLHeader();
-print"<br><br><br>";
-print '<b id="welcome">Welcome: </b>';
+print"<br><br>";
+print '<b id="welcome">Welcome to the Electrical Engineering and Computer Science Asset Management System. </b>';
 ?>
 
-<?php echo $login_session; ?>
 
 <?php
-print'<b id="logout"><a href="logout.php">Log Out</a></b>';
+
 $footer = $rC->getNewFooter();
 $footer->printHTMLFooter();	
 	

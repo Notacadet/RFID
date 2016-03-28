@@ -17,7 +17,8 @@
 	 //  die("Connection failed: " . $conn->connect_error);
 	//}
 	$conn = RfidController::connect();//THIS WORKS
-
+	
+	print"<br><br>";
 	
 	//pulling data from the database 
 	$nameInfo= "SELECT firstName,lastName FROM users ORDER BY lastName ASC";

@@ -1,4 +1,7 @@
+
+
 <?php
+
 class Footer {
 
 	public function printHTMLFooter(){
@@ -6,4 +9,11 @@ class Footer {
 	}
 }
 
+?>
+
+<?php
+include('session.php');
+
+
+echo $login_session;
 ?>

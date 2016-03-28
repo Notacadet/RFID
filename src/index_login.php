@@ -9,7 +9,6 @@ header("location: home.php");
 <html>
 <head>
 <title>Asset Management System Login</title>
-<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="main">

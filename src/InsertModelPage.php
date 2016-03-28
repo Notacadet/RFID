@@ -3,12 +3,13 @@
 	//include_once 'Make.php';
 	
 	$rC = new RfidController();
-	$rC->printHTMLHEADER();
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
+
 	$model = $rC->getNewModel();
 	$model->generateNewModelForm();
-	$model->generateSelectModelForm();
-	$model->generateUpdateModelForm();
 	$model->generateDeleteModelForm();
-	$rC->printHTMLFOOTER();
+	$footer = $rC->getNewFooter();
+	$footer->printHTMLFooter();
 	
 ?>

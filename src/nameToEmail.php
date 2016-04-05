@@ -1,3 +1,4 @@
+
 <?php
 
 	include 'handReceipt.php';
@@ -13,11 +14,10 @@
 	$lName=$split[1];
 	
 	$conn = RfidController::connect(); 
-	$sName = "SELECT userName FROM users WHERE firstNAme='$fName' and lastName='$lName'";
+	$sName = "SELECT userName FROM users WHERE firstNAme=".$fName." and lastName=".$lName;
 	echo $sName;
 	$result = $conn->query($sName);
-	
-	//echo $result;
+
 	$testObject = new handReceipt();
 	$testObject->createHR($result);
 	

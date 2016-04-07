@@ -13,20 +13,35 @@ class Header {
 		</head>
 		<body>
 		<h1>EECS Asset Management System</h1>
-		<label for=show-menu class=show-menu>Show Menu</label>
-		<input type=checkbox id=show-menu role=button>
-		<ul id=menu>
-		<li><a href=home.php>Home</a></li>
-		<li><a href=handReciptHolderPage.php>Hand Receipts</a></li>
-		<li><a href=liveItem.php>Search by Item</a></li>
-		<li><a href=liveMakeAndModel.php>Search by Make and Model</a></li>
-		<li><a href=liveUser.php>Search User</a></li>
-		<li><a href=insertModelPage.php>Create a Make and a Model</a></li>
-		<li><a href=insertUserPage.php>Create User</a></li>
-		<li><a href=#>Latest Update</a></li>
-		<li><a href=#liveItem.php>Create Item</a></li>
-
-		</ul>");
+			<ul>
+				<li><a class='active' href=home.php>Home</a></li>
+				<li><a href=handReciptHolderPage.php>Hand Receipts</a></li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Items</a>
+					<div class='dropdown-content'>
+						<a href=liveItem.php>Search by Item</a>
+						<a href=#liveItem.php>Create Item</a>
+					</div>
+				</li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Makes and Models</a>
+					<div class='dropdown-content'>
+						<a href=liveMakeAndModel.php>Search by Make and Model</a>
+						<a href=insertModelPage.php>Create a Make and a Model</a>
+					</div>
+				</li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Users</a>
+					<div class='dropdown-content'>
+						<a href=liveUser.php>Search User</a>
+						<a href=insertUserPage.php>Create User</a>
+					</div>
+				</li>
+				<li><a href=#>Latest Update</a></li>
+				<li><a href=#>Locations</a></li>
+			</ul>
+		");
 	}
 }
 ?>
+

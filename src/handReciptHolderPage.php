@@ -1,4 +1,3 @@
-
 <?php 
 	include 'RfidController.php';
 	include 'handReceipt.php';

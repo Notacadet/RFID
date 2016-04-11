@@ -1,89 +1,49 @@
-﻿/*Strip the ul of padding and list styling*/
 ul {
-	list-style-type:none;
-	margin:0;
-	padding:0;
-	position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
-/*Create a horizontal list with spacing*/
 li {
-	display:inline-block;
-	float: left;
-	margin-right: 1px;
-	font-size: 55%;
+    float: left;
 }
 
-/*Style for menu links*/
-li a {
-	display:block;
-	min-width:100px;
-	height: 30px;
-	text-align: center;
-	line-height: 30px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #fff;
-	background: black;
-	text-decoration: none;
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-/*Hover state for top level links*/
-li:hover a {
-	background: #19c589;
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
 }
 
-/*Prevent text wrapping*/
-li ul li a {
-	width: auto;
-	min-width: 100px;
-	padding: 0 20px;
+li.dropdown {
+    display: inline-block;
 }
 
-/*Display the dropdown on hover*/
-ul li a:hover + .hidden, .hidden:hover {
-	display: block;
-}
-
-/*Style 'show menu' label button and hide it by default*/
-.show-menu {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-decoration: none;
-	color: #fff;
-	background: #19c589;
-	text-align: center;
-	padding: 10px 0;
-	display: none;
-}
-
-/*Hide checkbox*/
-input[type=checkbox]{
+.dropdown-content {
     display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-/*Show menu when invisible checkbox is checked*/
-input[type=checkbox]:checked ~ #menu{
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
+    text-align: left;
 }
 
+.dropdown-content a:hover {background-color: #f1f1f1}
 
-/*Responsive Styles*/
-
-@media screen and (max-width : 760px){
-	/*Make dropdown links appear inline*/
-	ul {
-		position: static;
-		display: none;
-	}
-	/*Create vertical spacing*/
-	li {
-		margin-bottom: 1px;
-	}
-	/*Make all menu links full width*/
-	ul li, li a {
-		width: 100%;
-	}
-	/*Display 'show menu' link*/
-	.show-menu {
-		display:block;
-	}
+.dropdown:hover .dropdown-content {
+    display: block;
 }

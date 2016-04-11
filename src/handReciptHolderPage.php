@@ -9,8 +9,8 @@
 	
 	//Connection to the database
 	//$servername = "localhost";
-	//$username = "evasung";
-	//$password = "hello";
+	//$username = "developer";
+	//$password = "cisco123";
 	//$dbname = "rfid_database";
 	//$conn = new mysqli($servername,$username,$password,$dbname);
 	//if ($conn->connect_error) {
@@ -78,8 +78,8 @@
 	
 	//function getHRList(){
 	//	$servername = "localhost";
-	//	$username = "evasung";
-	//	$password = "hello";
+	//	$username = "developer";
+	//	$password = "cisco123";
 	//	$dbname = "rfid_database";
 	//	$conn = new mysqli($servername,$username,$password,$dbname);
 	//	if ($conn->connect_error) {

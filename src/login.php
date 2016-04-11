@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL ^ E_DEPRECATED);
 session_start(); // Starting Session
 $error=''; // Variable To Store Error Message
 if (isset($_POST['submit'])) {

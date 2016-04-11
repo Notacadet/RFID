@@ -4,10 +4,11 @@ include 'header.php';
 include 'Model.php';
 include 'Nomenclature.php';
 include 'Profile.php';
+include 'Item.php';
 include 'Footer.php';
-include 'RFID.php';
-include 'file_insert.php';
-include 'file_display.php';
+include 'createUser.php';
+
+
 class RfidController
  {
  	//try this first
@@ -20,8 +21,8 @@ class RfidController
  	//it seems to not want instance or field variables holding the results of functions...or something like that. 
  	public static function connect(){//execute to establish connectivity to the database.
 		$servername = "localhost"; //default username and passwords for dev/test environments
-		$username = "developer";
-		$password = "cisco123";
+		$username = "root";
+		$password = "";
 		$dbname = "rfid_database";
 		$conn = new mysqli($servername,$username,$password,$dbname);
 		if ($conn->connect_error) {
@@ -46,12 +47,16 @@ class RfidController
 	public function getNewNomenclature(){
 		return new Nomenclature;
 	}
-	public function getNewProf(){
+	public function getnewProf(){
 		return new Profile;
-	}	
-	public function getNewRfid(){
-		return new Rfid;
 	}
+	public function getnewItem(){
+		return new Item;
+	}
+	public function getnewUser(){
+		return new User;
+	}	
+	
  };
  ?>
    

@@ -24,7 +24,7 @@
 		while ($row=$result->fetch_assoc()){
 			$holder=implode(" ",$row);
 			echo "<tr>"."<td>";
-			echo "<a href='nameToEmail.php?fn=$holder'> $holder</a>"."<br>"."</td>"."<td>"."CSV Export"."</td>"."<td>"."holder"."</td>"."</tr>"; 
+			echo "<a href='nameToEmail.php?fn=$holder'> $holder</a>"."<br>"."</td>"."<td>"."<a href='nameToCsv.php?fn=$holder'>CSV Export</a>"."</td>"."<td>"."holder"."</td>"."</tr>"; 
 		};
 	echo "</tr></table>";
 	}

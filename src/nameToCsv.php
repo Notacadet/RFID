@@ -1,6 +1,6 @@
 <?php
 
-	include 'handReceipt.php';
+	include 'exportHRCSV.php';
 	include 'RfidController.php';
 
 		
@@ -22,7 +22,7 @@
 	echo $holder;
         		
         		
-	$testObject = new handReceipt();
-	$testObject->createHR($holder);
+	$testObject = new XCSV();
+	$testObject->createCSV($holder);
 	
 ?>

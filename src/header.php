@@ -2,7 +2,7 @@
 class Header {
 
 	public function printHTMLHeader(){
-		print'<b id="logout"><a href="logout.php">Log Out</a></b>';
+		/*print'<b id="logout"><a href="logout.php">Log Out</a></b>';*/
 		print("<!doctype html>
 		<html lang=en>
 		<head>
@@ -24,10 +24,17 @@ class Header {
 					</div>
 				</li>
 				<li class='dropdown'>
-					<a href='#' class='dropbtn'>Makes and Models</a>
+					<a href='#' class='dropbtn'>Makes</a>
 					<div class='dropdown-content'>
-						<a href=liveMakeAndModel.php>Search by Make and Model</a>
-						<a href=insertModelPage.php>Create a Make and a Model</a>
+						<a href=#>Create a Make</a>
+						<a href=liveMake.php>Search Make</a>
+					</div>
+				</li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Models</a>
+					<div class='dropdown-content'>
+						<a href=InsertModelPage.php>Create a Model</a>
+						<a href=liveModel.php>Search by Model</a>
 					</div>
 				</li>
 				<li class='dropdown'>
@@ -38,10 +45,12 @@ class Header {
 					</div>
 				</li>
 				<li><a href=#>Latest Update</a></li>
-				<li><a href=#>Locations</a></li>
+				<li><a href=liveLocation.php>Locations</a></li>
 			</ul>
+		</body>
 		");
 	}
 }
 ?>
+
 

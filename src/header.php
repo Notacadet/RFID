@@ -2,7 +2,7 @@
 class Header {
 
 	public function printHTMLHeader(){
-		/*print'<b id="logout"><a href="logout.php">Log Out</a></b>';*/
+		print'<b id="logout"><a href="logout.php">Log Out</a></b>';
 		print("<!doctype html>
 		<html lang=en>
 		<head>

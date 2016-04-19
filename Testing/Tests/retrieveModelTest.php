@@ -45,7 +45,7 @@ class RetrieveModelsTest extends PHPUnit_Extensions_Database_TestCase
             ->createQueryTable("models",
             "SELECT * FROM models");
         
-        $expectedTable =  $this->createXmlDataSet("modelsTest1.xml")
+        $expectedTable =  $this->createXmlDataSet("modelsTest_bool.xml")
             ->getTable("models");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

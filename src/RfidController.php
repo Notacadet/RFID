@@ -6,6 +6,8 @@ include 'Nomenclature.php';
 include 'Profile.php';
 include 'Footer.php';
 include 'RFID.php';
+include 'file_insert.php';
+include 'file_display.php';
 class RfidController
  {
  	//try this first

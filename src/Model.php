@@ -35,9 +35,26 @@ class Model{
 	}
 
 	//CRUD Sequence for Model
-	public function insertModel($inModel,$inMake,$inCategory){//doesn't handle photos now
+	public function insertModel($inModel,$inMake,$inCategory,$inPhoto){//doesn't handle photos now
+	$maxsize = 10000000; //set to approx 10 MB
+    //check associated error code
+    if($_FILES['userfile']['error']==UPLOAD_ERR_OK) {
+        //check whether file is uploaded with HTTP POST
+        if(is_uploaded_file($_FILES['userfile']['tmp_name'])) {    
+            //checks size of uploaded image on server side
+            if( $_FILES['userfile']['size'] < $maxsize) {  
+  
+               //checks whether uploaded file is of image type
+              //if(strpos(mime_content_type($_FILES['userfile']['tmp_name']),"image")===0) {
+                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                if(strpos(finfo_file($finfo, $_FILES['userfile']['tmp_name']),"image")===0) {    
+                    // prepare the image for insertion
+                    $imgData =addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
+                    // put the image in the db...
+                    // database connection
+				}
 		$conn = RfidController::connect();
-		$sql = "INSERT INTO models (model_Name,make_id,nom_id,created_at, updated_at, delete_Boolean) VALUES ('$inModel',(SELECT make_id FROM makes WHERE makeName = '$inMake'),(SELECT nomenclature_id FROM nomenclature WHERE nomenclature_Name = '$inCategory') ,CURDATE(),CURDATE(),'0')";
+		$sql = "INSERT INTO models (model_Name,make_id,nom_id, photo, photo_name, created_at, updated_at, delete_Boolean) VALUES ('$inModel',(SELECT make_id FROM makes WHERE makeName = '$inMake'),(SELECT nomenclature_id FROM nomenclature WHERE nomenclature_Name = '$inCategory'),('{$imgData}') ,CURDATE(),CURDATE(),'0')";
 		$result = $conn->query($sql);
 		if(!$result){
 				die("Didn't Work " . mysqli_error($conn));

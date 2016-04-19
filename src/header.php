@@ -35,6 +35,7 @@ class Header {
 					<div class='dropdown-content'>
 						<a href=InsertModelPage.php>Create a Model</a>
 						<a href=liveModel.php>Search by Model</a>
+						<a href=AddPicture.php> Upload a Picture</a>
 					</div>
 				</li>
 				<li class='dropdown'>

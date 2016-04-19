@@ -48,6 +48,10 @@ function upload() {
                     
                     $conn = mysqli_connect('localhost','developer','cisco123','RFID_Database');
 					
+					
+                    // select the db
+                   
+					}
                     // our sql query
                     $sql = "INSERT INTO storeimages
                     (photo, photo_name)

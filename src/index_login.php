@@ -1,3 +1,13 @@
+<?php 
+	include 'RfidController.php';
+	//include_once 'Make.php';
+	
+	$rC = new RfidController();
+	$header = $rC->getNewNormalHeader();
+	$header->printHTMLHeader();
+?>
+
+
 <?php
 include('login.php'); // Includes Login Script
 

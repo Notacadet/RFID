@@ -1,6 +1,7 @@
 <?php
 include 'Make.php';
 include 'header.php';
+include 'Normalheader.php';
 include 'Model.php';
 include 'Nomenclature.php';
 include 'Profile.php';
@@ -31,6 +32,9 @@ class RfidController
 	//These getters are called to create objects of the classes in the xPage.php files
 	public function getNewHeader(){
 		return new Header;
+	}
+	public function getNewNormalHeader(){
+		return new Normalheader;
 	}
 	public function getNewFooter(){
 		return new Footer;

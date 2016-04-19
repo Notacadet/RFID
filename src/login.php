@@ -19,7 +19,7 @@ $password = stripslashes($password);
 $username = mysqli_real_escape_string($connection,$username);
 $password = mysqli_real_escape_string($connection,$password); 
 // SQL query to fetch information of registerd users and finds user match.
-$query = mysqli_query($connection,"select * from users where pass='$password' AND userName='$username'");
+$query = mysqli_query($connection,"select * from admin where pass='$password' AND adminName='$username'");
 $rows = mysqli_num_rows($query);
 if ($rows == 1) {
 $_SESSION['login_user']=$username; // Initializing Session

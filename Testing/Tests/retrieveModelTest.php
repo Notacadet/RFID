@@ -36,7 +36,7 @@ class RetrieveModelsTest extends PHPUnit_Extensions_Database_TestCase
     */
      protected function getDataSet() 
     {
-        return $this->createXmlDataSet("modelsTest1.xml");
+        return $this->createXmlDataSet("modelsTest_bool.xml");
     }
     
 

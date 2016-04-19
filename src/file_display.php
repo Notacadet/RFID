@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
  include "file_constants.php";
  // just so we know it is broken
  error_reporting(E_ALL);
@@ -32,4 +33,20 @@
  else {
      echo 'Please use a real id number';
  }
+=======
+ // just so we know it is broken
+ // some basic sanity checks
+     //connect to the db
+     $conn = new PDO("mysql:host=localhost;dbname=RFID_Database", 'developer', 'cisco123');
+     // select our database
+     // get the image from the db
+     $sql = "SELECT photo FROM storeimages WHERE photo_id=1";
+     
+	$stmt = $conn->prepare($sql);
+	$stmt->execute(); 
+	$stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$array = $stmt->fetch();
+	header('Content-Type: image/jpeg');
+	echo $array['photo'];
+>>>>>>> refs/remotes/origin/Big_Moose_Daddy_2_Return_Of_The_Loose
 ?>

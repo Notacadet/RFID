@@ -1,3 +1,13 @@
+<?php 
+	include 'RfidController.php';
+	//include_once 'Make.php';
+	
+	$rC = new RfidController();
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
+
+?>
+
 <html>
 <head><title>File Insert</title></head>
 <body>
@@ -11,10 +21,6 @@
 </form>
 
 <?php
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/Big_Moose_Daddy_2_Return_Of_The_Loose
 // check if a file was submitted
 if(!isset($_FILES['userfile']))
 {
@@ -31,20 +37,6 @@ else
     echo 'Sorry, could not upload file';
     }
 }
-<<<<<<< HEAD
-
-// the upload function
-
-function upload() {
-    $maxsize = 10000000; //set to approx 10 MB
-
-    //check associated error code
-    if($_FILES['userfile']['error']==UPLOAD_ERR_OK) {
-
-        //check whether file is uploaded with HTTP POST
-        if(is_uploaded_file($_FILES['userfile']['tmp_name'])) {    
-
-=======
 // the upload function
 function upload() {
     $maxsize = 10000000; //set to approx 10 MB
@@ -52,7 +44,6 @@ function upload() {
     if($_FILES['userfile']['error']==UPLOAD_ERR_OK) {
         //check whether file is uploaded with HTTP POST
         if(is_uploaded_file($_FILES['userfile']['tmp_name'])) {    
->>>>>>> refs/remotes/origin/Big_Moose_Daddy_2_Return_Of_The_Loose
             //checks size of uploaded image on server side
             if( $_FILES['userfile']['size'] < $maxsize) {  
   
@@ -60,31 +51,6 @@ function upload() {
               //if(strpos(mime_content_type($_FILES['userfile']['tmp_name']),"image")===0) {
                  $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 if(strpos(finfo_file($finfo, $_FILES['userfile']['tmp_name']),"image")===0) {    
-<<<<<<< HEAD
-
-                    // prepare the image for insertion
-                    $imgData =addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
-
-                    // put the image in the db...
-                    // database connection
-                    
-
-                    $conn = RfidController::connect();
-
-
-                    // select the db
-                   
-					if(!$result){
-						die("Didn't Work " . mysqli_error($conn));
-					}
-
-                    // our sql query
-                    $sql = "INSERT INTO test_image
-                    (image, name)
-                    VALUES
-                    ('{$imgData}', '{$_FILES['userfile']['name']}');";
-
-=======
                     // prepare the image for insertion
                     $imgData =addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
                     // put the image in the db...
@@ -101,18 +67,12 @@ function upload() {
                     (photo, photo_name)
                     VALUES
                     ('{$imgData}', '{$_FILES['userfile']['name']}');";
->>>>>>> refs/remotes/origin/Big_Moose_Daddy_2_Return_Of_The_Loose
                     // insert the image
                     $result = $conn->query($sql);
                     if(!$result){
 						die("Didn't Work " . mysqli_error($conn));
 					}
-<<<<<<< HEAD
-
-                    $msg='<p>Image successfully saved in database with id ='. mysql_insert_id().' </p>';
-=======
                     $msg='<p>Image successfully saved in database with id ='. mysqli_insert_id($conn).' </p>';
->>>>>>> refs/remotes/origin/Big_Moose_Daddy_2_Return_Of_The_Loose
                 }
                 else
                     $msg="<p>Uploaded file is not an image.</p>";
@@ -127,23 +87,10 @@ function upload() {
         }
         else
             $msg="File not uploaded successfully.";
-<<<<<<< HEAD
-
-    }
-    else {
-        $msg= file_upload_error_message($_FILES['userfile']['error']);
-    }
-    return $msg;
-}
-
-// Function to return error message based on error code
-
-=======
     
     return $msg;
 }
 // Function to return error message based on error code
->>>>>>> refs/remotes/origin/Big_Moose_Daddy_2_Return_Of_The_Loose
 function file_upload_error_message($error_code) {
     switch ($error_code) {
         case UPLOAD_ERR_INI_SIZE:
@@ -167,3 +114,10 @@ function file_upload_error_message($error_code) {
 ?>
 </body>
 </html>
+
+
+<?php
+	$footer = $rC->getNewFooter();
+	$footer->printHTMLFooter();
+	
+?>

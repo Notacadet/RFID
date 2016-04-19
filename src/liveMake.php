@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 		<html lang=en>
 		<head>
 		<title>EECS Asset Management System</title>
@@ -43,14 +43,11 @@
 			</ul>
 
 <script type="text/javascript">
-	var rfid='';
-	var serialNum='';
-
-
-function showResult(rfid, serialNum) {
+var make='';
+function showResult(make) {
 	var xmlhttp;
- 	if (rfid.length==0 & serialNum.length==0) {
-    	document.getElementById("livesearch").innerHTML='';
+ 	if (make.length==0) {
+    	document.getElementById("livesearch").innerHTML="";
     	document.getElementById("livesearch").style.border="0px";
   	}
   	if (window.XMLHttpRequest) {
@@ -65,7 +62,7 @@ function showResult(rfid, serialNum) {
       	document.getElementById("livesearch").style.border="1px solid #A5ACB2";
     	}
   	}
-  	xmlhttp.open("GET","getItem.php?inrfid=" + rfid + "&inSerial=" + serialNum, true);
+  	xmlhttp.open("GET","getMake.php?inMake=" + make, true);
   	xmlhttp.send();
 }
 
@@ -81,8 +78,7 @@ function showResult(rfid, serialNum) {
 <br>
 <br>
 <form>
-Search RFID: <input type="text" size="30" onkeyup="rfid=this.value; showResult(rfid, serialNum);">
-Search Serial: <input type="text" size="30" onkeyup="serialNum=this.value; showResult(rfid, serialNum);">
+Search Make: <input type="text" size="30" onkeyup="make=this.value; showResult(make);">
 </form>
 <div id="livesearch"></div>
 </body>

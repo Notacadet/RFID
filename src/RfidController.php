@@ -4,11 +4,8 @@ include 'header.php';
 include 'Model.php';
 include 'Nomenclature.php';
 include 'Profile.php';
-include 'Item.php';
 include 'Footer.php';
-include 'createUser.php';
-
-
+include 'RFID.php';
 class RfidController
  {
  	//try this first
@@ -47,16 +44,12 @@ class RfidController
 	public function getNewNomenclature(){
 		return new Nomenclature;
 	}
-	public function getnewProf(){
+	public function getNewProf(){
 		return new Profile;
-	}
-	public function getnewItem(){
-		return new Item;
-	}
-	public function getnewUser(){
-		return new User;
 	}	
-	
+	public function getNewRfid(){
+		return new Rfid;
+	}
  };
  ?>
    

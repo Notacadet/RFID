@@ -8,7 +8,9 @@
 
 	$model = $rC->getNewModel();
 	$model->generateNewModelForm();
-	$model->generateDeleteModelForm();
+?>
+
+<?php
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
 	

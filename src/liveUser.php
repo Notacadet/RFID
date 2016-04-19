@@ -1,12 +1,46 @@
-<?php 
-	include 'RfidController.php';
-	
-	$rC = new RfidController();
-	$header = $rC->getNewHeader();
-	$header->printHTMLHeader();	
-?>
-
-<html>
+<!doctype html>
+		<html lang=en>
+		<head>
+		<title>EECS Asset Management System</title>
+		<meta name=viewport content='width=device-width, initial-scale=1'>
+		<link rel=stylesheet href=navMenu.css>
+		</head>
+		<body>
+		<h1>EECS Asset Management System</h1>
+			<ul>
+				<li><a class='active' href=home.php>Home</a></li>
+				<li><a href=handReciptHolderPage.php>Hand Receipts</a></li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Items</a>
+					<div class='dropdown-content'>
+						<a href=liveItem.php>Search by Item</a>
+						<a href=#liveItem.php>Create Item</a>
+					</div>
+				</li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Makes</a>
+					<div class='dropdown-content'>
+						<a href=#>Create a Make</a>
+						<a href=#>Search by Make</a>
+					</div>
+				</li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Models</a>
+					<div class='dropdown-content'>
+						<a href=InsertModelPage.php>Create a Model</a>
+						<a href=liveMakeAndModel.php>Search by Model</a>
+					</div>
+				</li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Users</a>
+					<div class='dropdown-content'>
+						<a href=liveUser.php>Search User</a>
+						<a href=insertUserPage.php>Create User</a>
+					</div>
+				</li>
+				<li><a href=#>Latest Update</a></li>
+				<li><a href=liveLocation.php>Locations</a></li>
+			</ul>
 <script type="text/javascript">
 var lastname='';
 var firstname='';
@@ -37,6 +71,9 @@ function showResult(lastname, firstname, rank) {
 </head>
 <body>
 
+<div class="Header">
+<?php include("header.php");?>
+</div>
 <br>
 <br>
 <br>
@@ -49,10 +86,3 @@ Search Rank: <input type="text" size="30" onkeyup="rank=this.value; showResult(l
 <div id="livesearch"></div>
 </body>
 </html> 
-
-<?php 
-
-	$footer = $rC->getNewFooter();
-	$footer->printHTMLFooter();
-?>
-	

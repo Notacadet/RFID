@@ -20,8 +20,8 @@ th {text-align: left;}
 	public function createHR($selectedName){
 		//$conn = connect();
 		$servername = "localhost";
-		$username = "evasung";
-		$password = "hello";
+		$username = "root";
+		$password = "sqldba";
 		$dbname = "rfid_database";
 		$conn = new mysqli($servername,$username,$password,$dbname);
 		if ($conn->connect_error) {

@@ -23,7 +23,7 @@ class updatesMakesTest extends PHPUnit_Extensions_Database_TestCase
         $pdo = new PDO('mysql:host=127.0.0.1;dbname=rfid_database', $user, $password);
         return $this->createDefaultDBConnection($pdo, $database);
     }
-    
+/*    
     public function getSetUpOperation() {
         // whether you want cascading truncates
         // set false if unsure
@@ -33,21 +33,21 @@ class updatesMakesTest extends PHPUnit_Extensions_Database_TestCase
             PHPUnit_Extensions_Database_Operation_Factory::INSERT()
         ));
     }
-    
+*/    
      protected function getDataSet() 
     {
-        return $this->createXmlDataSet("makestest2.xml");
+        return $this->createXmlDataSet("makestest2_bool.xml");
     }
 
     public function testUpdateMakes() {
         $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
-        $make = new updatesmake('Fluke');
-        $make->updateMake('Fluke');
+        $make = new updatesMake();
+        $make->updateMake("'Fluke'");
         $resultingTable = $this->getConnection()
             ->createQueryTable("makes",
             "SELECT * FROM makes");
         
-        $expectedTable =  $this->createXmlDataSet("makestest.xml")
+        $expectedTable =  $this->createXmlDataSet("makestest_bool_update.xml")
             ->getTable("makes");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

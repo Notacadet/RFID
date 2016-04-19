@@ -1,6 +1,6 @@
 <?php
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\DeleteMakeDAO.php";
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\deletesmake.php";
+require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Interfaces\DeleteMakeDAO.php";
+require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\src\deletesmake.php";
 
 /*
 class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Extensions_Database_Operation_Truncate
@@ -36,24 +36,18 @@ class DeleteMakesTest extends PHPUnit_Extensions_Database_TestCase
     */
      protected function getDataSet() 
     {
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
-        $dataSet->addTable('makes', dirname(__FILE__)."\makes_Stale.csv");
-        return $dataSet;
+        return $this->createXmlDataSet("makestest2_bool.xml");
     }
 
     public function testDeleteMakes() {
         $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
         $delete = new deleteMake();
-        $delete->deletesMake(array(
-            "make_id" => "164",
-            "makeName" => "Lorem",
-            "created_at" => "2011-04-06 10:0:00",
-            "updated_at" => "2011-04-06 10:02:00"));
+        $delete->deletesMake('Fluke');
         $resultingTable = $this->getConnection()
             ->createQueryTable("makes",
             "SELECT * FROM makes");
         
-        $expectedTable =  $this->createXmlDataSet("makestest.xml")
+        $expectedTable =  $this->createXmlDataSet("makestest_bool_delete.xml")
             ->getTable("makes");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

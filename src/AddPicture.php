@@ -1,3 +1,13 @@
+<?php 
+	include 'RfidController.php';
+	//include_once 'Make.php';
+	
+	$rC = new RfidController();
+	$header = $rC->getNewHeader();
+	$header->printHTMLHeader();
+
+?>
+
 <html>
 <head><title>File Insert</title></head>
 <body>
@@ -104,3 +114,10 @@ function file_upload_error_message($error_code) {
 ?>
 </body>
 </html>
+
+
+<?php
+	$footer = $rC->getNewFooter();
+	$footer->printHTMLFooter();
+	
+?>

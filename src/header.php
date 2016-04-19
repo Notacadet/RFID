@@ -1,8 +1,7 @@
 <?php
 class Header {
-
 	public function printHTMLHeader(){
-		/*print'<b id="logout"><a href="logout.php">Log Out</a></b>';*/
+		print'<b id="logout"><a href="logout.php">Log Out</a></b>';
 		print("<!doctype html>
 		<html lang=en>
 		<head>
@@ -26,7 +25,7 @@ class Header {
 				<li class='dropdown'>
 					<a href='#' class='dropbtn'>Makes</a>
 					<div class='dropdown-content'>
-						<a href=#>Create a Make</a>
+						<a href=InsertMakePage.php>Create a Make</a>
 						<a href=liveMake.php>Search Make</a>
 					</div>
 				</li>
@@ -35,6 +34,7 @@ class Header {
 					<div class='dropdown-content'>
 						<a href=InsertModelPage.php>Create a Model</a>
 						<a href=liveModel.php>Search by Model</a>
+						<a href=addPicture.php>Upload Picture</a>
 					</div>
 				</li>
 				<li class='dropdown'>
@@ -45,12 +45,25 @@ class Header {
 					</div>
 				</li>
 				<li><a href=#>Latest Update</a></li>
-				<li><a href=liveLocation.php>Locations</a></li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Locations</a>
+					<div class='dropdown-content'>
+						<a href=liveLocation.php>Search by Location</a>
+						<a href=insertLocationPage.php>Create Location</a>
+					</div>
+				</li>
+
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Nomenclature</a>
+					<div class='dropdown-content'>
+						<a href=liveNomenclature.php>Search by Nomenclature</a>
+						<a href=insertNomPage.php>Create Nomenclature</a>
+					</div>
+				</li>
+
 			</ul>
 		</body>
 		");
 	}
 }
 ?>
-
-

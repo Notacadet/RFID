@@ -9,8 +9,8 @@
 	
 	//Connection to the database
 	//$servername = "localhost";
-	//$username = "developer";
-	//$password = "cisco123";
+	//$username = "evasung";
+	//$password = "hello";
 	//$dbname = "rfid_database";
 	//$conn = new mysqli($servername,$username,$password,$dbname);
 	//if ($conn->connect_error) {
@@ -32,7 +32,7 @@
 		while ($row=$result->fetch_assoc()){
 			//$nameArray[]= (string)$row;
 			$holder=implode(" ",$row);
-			echo "<br>"."<br>"."<td>";
+			echo "<br>"."<td>";
 			echo "<a href='nameToEmail.php?fn=$holder'> $holder</a>"."<br>"."</td>"; 
 		};
 	}
@@ -78,8 +78,8 @@
 	
 	//function getHRList(){
 	//	$servername = "localhost";
-	//	$username = "developer";
-	//	$password = "cisco123";
+	//	$username = "evasung";
+	//	$password = "hello";
 	//	$dbname = "rfid_database";
 	//	$conn = new mysqli($servername,$username,$password,$dbname);
 	//	if ($conn->connect_error) {

@@ -1,6 +1,6 @@
+
 <?php
 include('login.php'); // Includes Login Script
-
 if(isset($_SESSION['login_user'])){
 header("location: home.php");
 }
@@ -27,5 +27,3 @@ header("location: home.php");
 </div>
 </body>
 </html>
-
-<!-- Agarwal, Nareej. "PHP Login Form with Sessions." PHP Login Form with Sessions. Formget, n.d. Web. 26 Feb. 2016. <http://www.formget.com/login-form-in-php/> -->

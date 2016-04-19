@@ -40,10 +40,18 @@
 				</li>
 				<li><a href=#>Latest Update</a></li>
 				<li><a href=liveLocation.php>Locations</a></li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Nomenclature</a>
+					<div class='dropdown-content'>
+						<a href=liveNomenclature.php>Search by Nomenclature</a>
+						<a href=#>Create Nomenclature</a>
+					</div>
+				</li>
+
 			</ul>
 
 <script type="text/javascript">
-var make='';
+var make="";
 function showResult(make) {
 	var xmlhttp;
  	if (make.length==0) {

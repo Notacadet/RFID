@@ -6,7 +6,7 @@ class User{
 		print(" <br><br><br><br><br><br><form action=addNewUser.php method=post>
 			First Name: <input name=firstname type=text >
 			Last Name: <input name=lastname type=text >
-			User Name: <input name=usernmae type=text placeholder='joe.smith@example.com'>
+			User Name: <input name=username type=text placeholder='joe.smith@example.com'>
 			Rank: <select name=rank type=text> 
 				  <option value='' disabled selected>Select Rank</option>
 				  <option value = SSG>SSG</option>
@@ -30,7 +30,7 @@ class User{
 	}
 
 
-	public function insertUser($firstname, $lastname, $payGrade){
+	public function insertUser($firstname, $lastname, $username, $payGrade){
 		$conn = RfidController::connect();//THIS WORKS
 		$sql =  "INSERT INTO users ( userName, lastName, firstNAme,payGrade, pass, User_Type) VALUES ('$username', '$lastname', '$firstname', '$payGrade', 'NULL', 'NULL')";
 		$result = $conn->query($sql);

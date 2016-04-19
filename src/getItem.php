@@ -26,9 +26,13 @@ if (!$con) {
 
 mysqli_select_db($con,"rfid_database");
 
-$sql="SELECT items.rfid, items.serialNum, locations.roomNumber, makes.makeName, models.model_name, users.userName FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join makes on models.make_id=makes.make_id join users on items.hrholder_id=users.user_id where rfid like '%$inrfid%' and serialNum like '%$inSerial%' order by roomNumber, makeName, model_name";
+$sql="SELECT items.rfid, items.serialNum, items.items_id, makes.make_id, locations.roomNumber, locations.location_id, makes.makeName, models.model_name, models.model_id, users.userName FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join makes on models.make_id=makes.make_id join users on items.hrholder_id=users.user_id where rfid like '%$inrfid%' and serialNum like '%$inSerial%' order by roomNumber, makeName, model_name";
 $result = mysqli_query($con,$sql);
 
+if (!$result) {
+    printf("Error: %s\n", mysqli_error($con));
+    exit();
+}
 echo "<table>
 <tr>
 <th>RFID</th>
@@ -39,12 +43,16 @@ echo "<table>
 <th>HR Holder</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
+	$selectedModel=$row["model_id"];
+	$selectedMake=$row["make_id"];
+	$selectedLocation=$row["location_id"];
+	$selectedItem=$row["items_id"];
     echo "<tr>";
-    echo "<td><a href=#>" . $row['rfid'] . "</td>";
+    echo "<td><a href=itemLandingPage.php?fn=$selectedItem>" . $row['rfid'] . "</td>";
     echo "<td>" . $row['serialNum'] . "</td>";
-    echo "<td><a href=#>" . $row['roomNumber'] . "</td>";
-    echo "<td><a href=#>" . $row['makeName'] . "</td>";
-    echo "<td><a href=#>" . $row['model_name'] . "</td>";
+    echo "<td><a href=locationLandingPage.php?fn=$selectedLocation>" . $row['roomNumber'] . "</td>";
+    echo "<td><a href=makeLandingPage.php?fn=$selectedMake>" . $row['makeName'] . "</td>";
+    echo "<td><a href=modelToModel_id.php?fn=$selectedModel>" . $row['model_name'] . "</td>";
     echo "<td><a href=#>" . $row['userName'] . "</td>";
     echo "</tr>";
 }

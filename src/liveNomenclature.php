@@ -21,7 +21,7 @@
 					<a href='#' class='dropbtn'>Makes</a>
 					<div class='dropdown-content'>
 						<a href=#>Create a Make</a>
-						<a href=liveMake.php>Search by Make</a>
+						<a href=liveMake.php>Search Make</a>
 					</div>
 				</li>
 				<li class='dropdown'>
@@ -43,19 +43,17 @@
 				<li class='dropdown'>
 					<a href='#' class='dropbtn'>Nomenclature</a>
 					<div class='dropdown-content'>
-						<a href=liveNomenclature.php>Search by Nomenclature</a>
+						<a href=#>Search by Nomenclature</a>
 						<a href=#>Create Nomenclature</a>
 					</div>
 				</li>
-
 			</ul>
+
 <script type="text/javascript">
-var lastname='';
-var firstname='';
-var rank='';
-function showResult(lastname, firstname, rank) {
+var nomenclature='';
+function showResult(nomenclature) {
 	var xmlhttp;
- 	if (lastname.length==0 & firstname.length==0 & rank.length==0) {
+ 	if (nomenclature.length==0) {
     	document.getElementById("livesearch").innerHTML="";
     	document.getElementById("livesearch").style.border="0px";
   	}
@@ -71,7 +69,7 @@ function showResult(lastname, firstname, rank) {
       	document.getElementById("livesearch").style.border="1px solid #A5ACB2";
     	}
   	}
-  	xmlhttp.open("GET","getUser.php?inLastname=" + lastname + "&inFirstname=" + firstname + "&inRank=" + rank, true);
+  	xmlhttp.open("GET","getNomenclature.php?inNomenclature=" + nomenclature, true);
   	xmlhttp.send();
 }
 
@@ -87,9 +85,7 @@ function showResult(lastname, firstname, rank) {
 <br>
 <br>
 <form>
-Search Lastname: <input type="text" size="30" onkeyup="lastname=this.value; showResult(lastname, firstname, rank);">
-Search Firstname: <input type="text" size="30" onkeyup="firstname=this.value; showResult(lastname, firstname, rank);">
-Search Rank: <input type="text" size="30" onkeyup="rank=this.value; showResult(lastname, firstname, rank);">
+Search Nomenclature: <input type="text" size="30" onkeyup="nomenclature=this.value; showResult(nomenclature);">
 </form>
 <div id="livesearch"></div>
 </body>

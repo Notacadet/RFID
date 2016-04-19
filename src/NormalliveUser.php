@@ -9,7 +9,7 @@
 		<body>
 		<h1>EECS Asset Management System</h1>
 			<ul>
-				<li><a class='active' href=index_login.php>Home</a></li>
+				<li><a class='active' href=index.php>Home</a></li>
 				<li><a href=NormalhandReciptHolderPage.php>Hand Receipts</a></li>
 				<li class='dropdown'>
 					<a href='#' class='dropbtn'>Items</a>
@@ -21,7 +21,6 @@
 					<a href='#' class='dropbtn'>Models</a>
 					<div class='dropdown-content'>
 						<a href=NormalliveModel.php>Search by Model</a>
-						<a href=NormaladdPicture.php>Upload Picture</a>
 					</div>
 				</li>
 				<li class='dropdown'>

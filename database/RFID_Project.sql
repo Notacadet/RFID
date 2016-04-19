@@ -135,6 +135,22 @@ CREATE TABLE admin (
     PRIMARY KEY (admin_id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `HRHolders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE HRHolders (
+    hrholder_id INT(2) COLLATE UTF8_UNICODE_CI NOT NULL auto_increment,
+    created_at DATE DEFAULT NULL,
+    updated_at DATE DEFAULT NULL,
+    user_id INT(4) COLLATE UTF8_UNICODE_CI NOT NULL,
+    delete_Boolean tinyint default NULL,
+    INDEX user_id (user_id),
+    Foreign Key (user_id)
+		references users(user_id)
+		ON DELETE CASCADE,
+    PRIMARY KEY (hrholder_id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 DROP TABLE IF EXISTS `items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -149,7 +165,7 @@ CREATE TABLE items (
     comments VARCHAR(34) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     price INT DEFAULT NULL,
     pbhrNumber VARCHAR(8) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
-    user_id INT(2) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
+    hrholder_id INT(2) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     accountedFor CHAR(1) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     alias CHAR(10) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     delete_Boolean tinyint default NULL,
@@ -161,9 +177,9 @@ CREATE TABLE items (
     Foreign Key (location_id)
 		references Locations(location_id)
 		ON DELETE CASCADE,
-    INDEX user_id (user_id),
-    Foreign Key (user_id)
-		references users(user_id)
+    INDEX hrholder_id (hrholder_id),
+    Foreign Key (hrholder_id)
+		references HRHolders(hrholder_id)
 		ON DELETE CASCADE,
 	PRIMARY KEY (items_id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;

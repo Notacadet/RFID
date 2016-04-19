@@ -119,21 +119,6 @@ CREATE TABLE users (
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE users (
-	user_id INT(4) COLLATE UTF8_UNICODE_CI NOT NULL auto_increment,
-    userName VARCHAR(40) COLLATE UTF8_UNICODE_CI NOT NULL,
-    lastName VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
-    firstNAme VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
-    payGrade VARCHAR(4) COLLATE UTF8_UNICODE_CI NOT NULL,
-    pass VARCHAR(40) COLLATE UTF8_UNICODE_CI NOT NULL,
-    user_Type VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
-    delete_Boolean tinyint default NULL,
-    PRIMARY KEY (user_id)
-)  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

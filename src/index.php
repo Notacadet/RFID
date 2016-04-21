@@ -24,10 +24,10 @@ header("location: home.php");
 <div id="main">
 <h1>AMS</h1>
 <div id="login">
-<h2>Admin Login Form</h2>
+<h2>Login Form</h2>
 <form action="" method="post">
-<label>Administrator :</label>
-<input id="name" name="username" placeholder="Admin Only" type="text">
+<label>UserName :</label>
+<input id="name" name="username" placeholder="username" type="text">
 <label>Password :</label>
 <input id="password" name="password" placeholder="**********" type="password">
 <input name="submit" type="submit" value=" Login ">

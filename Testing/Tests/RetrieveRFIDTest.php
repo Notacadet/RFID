@@ -1,6 +1,6 @@
 <?php
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\NomDAO.php";
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Newinsertnom.php";
+require_once "C:\wamp\bin\php\php5.5.12\InsertProfileDAO.php";
+require_once "C:\wamp\bin\php\php5.5.12\InsertProfile.php";
 
 /*
 class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Extensions_Database_Operation_Truncate
@@ -13,7 +13,7 @@ class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Exte
     }
 }
 */
-class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
+class InsertProfileTest extends PHPUnit_Extensions_Database_TestCase
 {
      public function getConnection()
     {
@@ -23,7 +23,7 @@ class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
         $pdo = new PDO('mysql:host=127.0.0.1;dbname=rfid_database', $user, $password);
         return $this->createDefaultDBConnection($pdo, $database);
     }
-    /*
+/*    
     public function getSetUpOperation() {
         // whether you want cascading truncates
         // set false if unsure
@@ -33,19 +33,19 @@ class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
             PHPUnit_Extensions_Database_Operation_Factory::INSERT()
         ));
     }
-    */
+ */   
      protected function getDataSet() 
     {
-       return $this->createXmlDataSet("nomTest_bool.xml");
+        return $this->createXmlDataSet("profiles2.xml");
     }
 
-    public function testInsertNom() {
+    public function testRetrieveRFID() {
         $resultingTable = $this->getConnection()
-            ->createQueryTable("nomenclature",
-            "SELECT * FROM nomenclature");
+            ->createQueryTable("profiles",
+            "SELECT * FROM profiles");
         
-        $expectedTable =  $this->createXmlDataSet("nomTest_bool.xml")
-            ->getTable("nomenclature");
+        $expectedTable =  $this->createXmlDataSet("profiles2.xml")
+            ->getTable("profiles");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }
 }

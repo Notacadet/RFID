@@ -34,11 +34,9 @@ class MakeModelsTest extends PHPUnit_Extensions_Database_TestCase
             ));
         }
         
-    protected function getDataSet() 
+     protected function getDataSet() 
     {
-         $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
-         $dataSet->addTable('models', dirname(__FILE__)."\models_Stale2.csv");
-         return $dataSet;
+        return $this->createXmlDataSet("modelsTest_bool.xml");
     }
 
     public function testInsertModel() {
@@ -49,7 +47,7 @@ class MakeModelsTest extends PHPUnit_Extensions_Database_TestCase
                 ->createQueryTable("models",
                 "SELECT * FROM models");
             
-         $expectedTable =  $this->createXmlDataSet("modelsTest.xml")
+         $expectedTable =  $this->createXmlDataSet("modelsTest_bool.xml")
                 ->getTable("models");
          $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

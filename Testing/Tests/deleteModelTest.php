@@ -1,6 +1,6 @@
 <?php
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\NomDAO.php";
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Newinsertnom.php";
+require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Interfaces\DeleteModelDAO.php";
+require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\src\deleteModel.php";
 
 /*
 class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Extensions_Database_Operation_Truncate
@@ -13,7 +13,7 @@ class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Exte
     }
 }
 */
-class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
+class DeleteMakesTest extends PHPUnit_Extensions_Database_TestCase
 {
      public function getConnection()
     {
@@ -36,16 +36,19 @@ class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
     */
      protected function getDataSet() 
     {
-       return $this->createXmlDataSet("nomTest_bool.xml");
+        return $this->createXmlDataSet("modelstest_bool.xml");
     }
 
-    public function testInsertNom() {
+    public function testDeleteMakes() {
+        $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
+        $delete = new deleteModel('577D1MOD177');
+        $delete->deleteModel('577D1MOD177');
         $resultingTable = $this->getConnection()
-            ->createQueryTable("nomenclature",
-            "SELECT * FROM nomenclature");
+            ->createQueryTable("models",
+            "SELECT * FROM models");
         
-        $expectedTable =  $this->createXmlDataSet("nomTest_bool.xml")
-            ->getTable("nomenclature");
+        $expectedTable =  $this->createXmlDataSet("modelstest_bool_delete.xml")
+            ->getTable("models");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }
 }

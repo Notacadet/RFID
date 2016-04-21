@@ -30,11 +30,9 @@ class ModelsConnectionTest extends PHPUnit_Extensions_Database_TestCase
         ));
     } 
     
-     protected function getDataSet()
+     protected function getDataSet() 
     {
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
-        $dataSet->addTable('makes', dirname(__FILE__)."\models_Stale2.csv");
-        return $dataSet;
+        return $this->createXmlDataSet("modelsTest_bool.xml");
     }
 
     public function testGetRowCount()

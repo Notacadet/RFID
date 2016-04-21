@@ -43,6 +43,7 @@ class Header {
 					<div class='dropdown-content'>
 						<a href=liveUser.php>Search User</a>
 						<a href=insertUserPage.php>Create User</a>
+						<a href=insertAdminPage.php>Create Admin</a>
 					</div>
 				</li>
 				<li><a href=#>Latest Update</a></li>

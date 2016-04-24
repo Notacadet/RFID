@@ -26,7 +26,7 @@ if (!$con) {
 
 mysqli_select_db($con,"rfid_database");
 
-$sql="SELECT makes.makeName, count(models.model_name) as Models FROM models left join makes on models.make_id=makes.make_id where makeName like '%$inMake%' and models.delete_Boolean='0' group by makeName order by makeName";
+$sql="SELECT makes.makeName, makes.make_id, count(models.model_name) as Models FROM models left join makes on models.make_id=makes.make_id where makeName like '%$inMake%' and models.delete_Boolean='0' group by makeName order by makeName";
 $result = mysqli_query($con,$sql);
 
 if (!$result) {
@@ -36,13 +36,14 @@ if (!$result) {
 echo "<table>
 <tr>
 <th>Make Name</th>
-<th>Model Name</th>
+<th>Number of Models</th>
 </tr>";
 
 
 while($row = mysqli_fetch_array($result)) {
+	$selectedMake=$row["make_id"];
 	echo "<tr>";
-    echo "<td><a href=https://www.google.com>" . $row['makeName'] . "</td>";
+    echo "<td><a href=makeLandingPage.php?fn=$selectedMake>" . $row['makeName'] . "</td>";
     echo "<td>" . $row['Models'] . "</td>";
     echo "</tr>";
 }

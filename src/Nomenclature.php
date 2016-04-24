@@ -5,7 +5,7 @@ class Nomenclature{
 	
 	public function generateNewNomForm(){
 		print(" <br><br><br><form action = addNewNom.php method=post>
-			New Nomenclature: <input name=nomName type=text ><br>
+			New Nomenclature: <input name=nomName type=text style='text-transform:uppercase'><br>
 				  <input value=Submit Data type=Submit>
 		</form></body></html>
 		");
@@ -32,15 +32,20 @@ class Nomenclature{
 		");
 	}
 	//CRUD Sequence for Nomenclature
-	public function insertNomenclature($categoryName){
+	public function insertNomenclature($nomName){
 		$conn = RfidController::connect();
-		$sql = "INSERT INTO nomenclature(nomenclature_Name,created_at, updated_at) VALUES ('$categoryName',CURDATE(),CURDATE())";
-		$result = $conn->query($sql);
-		if(!$result){
-				die("Didn't Work " . mysqli_error($conn));
+		$check=mysqli_query($conn, "select * from nomenclature where nomenclature_Name='$nomName'");
+		$checkrows=mysqli_num_rows($check);
+		if($checkrows>0){
+			echo "Nomenclature Exists";
 		}
-		else echo "Success";
-		$conn->close();
+		else{
+			$sql = "INSERT INTO nomenclature(nomenclature_Name,created_at, updated_at) VALUES ('$categoryName',CURDATE(),CURDATE())";
+			$result = $conn->query($sql) or die('Error querying database');
+			$conn->close();
+			echo "Nomenclature Added";
+		}
+		
 	}
 	public function selectNomenclature($categoryName){
 		$conn = RfidController::connect();
@@ -79,5 +84,41 @@ class Nomenclature{
 		else echo "Success";
 		$conn->close();
 	}
+	public function createNomenclatureView($selectedNom){
+
+		$conn = RfidController::connect();
+
+
+		$sql="SELECT makes.makeName, models.model_name, makes.make_id, models.model_id, count(items.rfid) as Items FROM models join makes on models.make_id=makes.make_id join items on models.model_id=items.model_id join nomenclature on models.nom_id=nomenclature.nomenclature_id where nomenclature.nomenclature_id = '$selectedNom' group by model_name order by model_name, makeName";
+		$result = mysqli_query($conn,$sql);
+		
+		if (!$result) {
+		    printf("Error: %s\n", mysqli_error($conn));
+		    exit();
+		}
+		echo "<table>
+		<tr>
+		<th>Make Name</th>
+		<th>Model Name</th>
+		<th>Items</th>
+		</tr>";
+		
+		if ($result -> num_rows > 0 ){
+				//output data of each row into the Array  
+				while ($row=$result->fetch_assoc()){
+					//$nameArray[]= (string)$row;
+					$selectedModel=$row["model_id"];
+					$selectedMake=$row["make_id"];
+					echo "<tr>";
+		    		echo "<td><a href=makeLandingPage.php?fn=$selectedMake>" . $row["makeName"]."</a></td>";
+		    		echo "<td><a href=modelToModel_id.php?fn=$selectedModel>" . $row['model_name'] . "</td>";
+		    		echo "<td>" . $row["Items"]."</a></td>";
+		    		echo "</tr>";
+				}
+		}
+		echo "</table>";
+		mysqli_close($conn);
+	}
+	
 }
 ?>

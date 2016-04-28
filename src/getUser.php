@@ -27,7 +27,7 @@ if (!$con) {
 
 mysqli_select_db($con,"rfid_database");
 
-$sql="SELECT userName, lastName, firstNAme, payGrade FROM users where lastName like '$inLastname%' and firstNAme like '$inFirstname%' and  payGrade like '$inRank%' order by lastName";
+$sql="SELECT userName, lastName, firstNAme, payGrade FROM users where lastName like '$inLastname%' and firstNAme like '$inFirstname%' and  payGrade like '$inRank%' and delete_Boolean='0' order by lastName";
 $result = mysqli_query($con,$sql);
 
 echo "<table>

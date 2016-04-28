@@ -36,17 +36,20 @@ class MakeNomTest extends PHPUnit_Extensions_Database_TestCase
     */
      protected function getDataSet() 
     {
-        return $this->createXmlDataSet("nomTest_bool.xml");
+        return $this->createXmlDataSet("nomTest.xml");
     }
 
     public function testInsertNom() {
-        $nom = new insertNom();
-        $nom->insertNomenclature('TRACER, CURVE');
+        $nom = new insertNom((array(
+            "nomenclature_id" => "339",
+            "nomenclature_Name" => "TRACER, CURVE",
+            "created_at" => "2011-04-06",
+            "updated_at" => "2011-04-06")));
         $resultingTable = $this->getConnection()
             ->createQueryTable("nomenclature",
             "SELECT * FROM nomenclature");
         
-        $expectedTable =  $this->createXmlDataSet("nomTest_bool_insert.xml")
+        $expectedTable =  $this->createXmlDataSet("nomTest2.xml")
             ->getTable("nomenclature");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

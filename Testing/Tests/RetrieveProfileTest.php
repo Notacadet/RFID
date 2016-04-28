@@ -1,6 +1,6 @@
 <?php
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Interfaces\InsertProfileDAO2.php";
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\src\InsertProfile2.php";
+require_once "C:\wamp\bin\php\php5.5.12\InsertProfileDAO.php";
+require_once "C:\wamp\bin\php\php5.5.12\InsertProfile.php";
 
 /*
 class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Extensions_Database_Operation_Truncate

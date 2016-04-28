@@ -22,18 +22,18 @@ th {text-align: left;}
 
 $inMake = $_GET['inMake'];
 $inModel = $_GET['inModel'];
-$con = mysqli_connect('localhost','developer','cisco123');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
+$conn = mysqli_connect('localhost','root','sqldba');
+if (!$conn) {
+    die('Could not connect: ' . mysqli_error($conn));
 }
 
-mysqli_select_db($con,"rfid_database");
+mysqli_select_db($conn,"rfid_database");
 
-$sql="SELECT makes.makeName, models.model_name, makes.make_id, models.model_id, nomenclature.nomenclature_id, nomenclature.nomenclature_Name, count(items.rfid) as Items FROM models join makes on models.make_id=makes.make_id join nomenclature on models.nom_id=nomenclature.nomenclature_id join items on models.model_id=items.model_id where makeName like '%$inMake%' and model_name like '%$inModel%' group by model_name order by nomenclature_Name, model_name, makeName";
-$result = mysqli_query($con,$sql);
+$sql="SELECT makes.makeName, models.model_name, makes.make_id, models.model_id, nomenclature.nomenclature_id, nomenclature.nomenclature_Name, count(items.rfid) as Items FROM models left join makes on models.make_id=makes.make_id join nomenclature on models.nom_id=nomenclature.nomenclature_id join items on models.model_id=items.model_id where makeName like '%$inMake%' and model_name like '%$inModel%' group by model_name order by nomenclature_Name, model_name, makeName";
+$result = mysqli_query($conn,$sql);
 
 if (!$result) {
-    printf("Error: %s\n", mysqli_error($con));
+    printf("Error: %s\n", mysqli_error($conn));
     exit();
 }
 echo "<table>
@@ -60,7 +60,7 @@ if ($result -> num_rows > 0 ){
 		}
 }
 echo "</table>";
-mysqli_close($con);
+mysqli_close($conn);
 ?>
 </body>
 </html>

@@ -36,7 +36,9 @@ class RetrieveTest extends PHPUnit_Extensions_Database_TestCase
     */
      protected function getDataSet() 
     {
-        return $this->createXmlDataSet("makesTest_bool.xml");
+        $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
+        $dataSet->addTable('makes', dirname(__FILE__)."\makes_Stale.csv");
+        return $dataSet;
     }
 
     public function testInsertMakes() {;
@@ -44,7 +46,7 @@ class RetrieveTest extends PHPUnit_Extensions_Database_TestCase
             ->createQueryTable("makes",
             "SELECT * FROM makes");
         
-        $expectedTable =  $this->createXmlDataSet("makestest_bool.xml")
+        $expectedTable =  $this->createXmlDataSet("makestest2.xml")
             ->getTable("makes");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

@@ -28,9 +28,11 @@ class ConnectionTest extends PHPUnit_Extensions_Database_TestCase
         ));
     } 
     
-     protected function getDataSet() 
+     protected function getDataSet()
     {
-        return $this->createXmlDataSet("makestest2_bool.xml");
+        $dataSet = new PHPUnit_Extensions_Database_DataSet_CsvDataSet();
+        $dataSet->addTable('makes', dirname(__FILE__)."\makes_Stale.csv");
+        return $dataSet;
     }
 
     public function testGetRowCount()

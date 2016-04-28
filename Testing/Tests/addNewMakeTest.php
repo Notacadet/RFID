@@ -36,7 +36,7 @@ class InsertMakesTest extends PHPUnit_Extensions_Database_TestCase
     
      protected function getDataSet() 
     {
-        return $this->createXmlDataSet("makestest2_bool.xml");
+        return $this->createXmlDataSet("makestest2.xml");
     }
 
     public function testInsertMakes() {
@@ -47,7 +47,7 @@ class InsertMakesTest extends PHPUnit_Extensions_Database_TestCase
             ->createQueryTable("makes",
             "SELECT * FROM makes");
         
-        $expectedTable =  $this->createXmlDataSet("makestest_bool.xml")
+        $expectedTable =  $this->createXmlDataSet("makestest.xml")
             ->getTable("makes");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }

@@ -28,7 +28,7 @@ class handReceipt{
 		    die("Connection failed: " . $conn->connect_error);
 		}
 		
-		$sql = "SELECT users.userName, nomenclature.nomenclature_Name, locations.roomNumber, makes.makeName, models.model_Name, items.rfid, items.serialNum FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join nomenclature on nomenclature.nomenclature_id=models.nom_id join makes on models.make_id=makes.make_id join users on users.user_id=items.hrholder_id WHERE userName like '%$selectedName%' ";
+		$sql = "SELECT users.userName, nomenclature.nomenclature_Name, locations.roomNumber, makes.makeName, models.model_Name, items.rfid, items.serialNum FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join nomenclature on nomenclature.nomenclature_id=models.nom_id join makes on models.make_id=makes.make_id join users on users.user_id=items.user_id WHERE userName like '%$selectedName%' ";
 		// WHERE user.userName=$selectedName
 		$result = $conn->query($sql);
 		if(!$result){

@@ -6,6 +6,9 @@ include 'Model.php';
 include 'Nomenclature.php';
 include 'Profile.php';
 include 'Footer.php';
+include 'Item.php';
+include 'createUser.php';
+include 'Location.php';
 include 'RFID.php';
 class RfidController
  {
@@ -39,6 +42,15 @@ class RfidController
 	public function getNewFooter(){
 		return new Footer;
 	}
+	public function getnewItem(){
+		return new Item;
+	}
+	public function getnewUser(){
+		return new User;
+	}
+	public function getnewLocation(){
+		return new Location;
+	}	
 	public function getNewMake(){ 
 		return new Make;
 	}

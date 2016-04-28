@@ -1,7 +1,30 @@
+<?php
+if (isset($_POST['submit'])){
+	$name=$_GET['fn'];
+	header('HTTP/1.1 304 Not Modified');
+	}
+?>
+
+
+
+<html>
+<head><title>File Insert</title></head>
+<body>
+<h3>Please Choose a File and click Submit</h3>
+
+<form enctype="multipart/form-data" action=
+"<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<label>Model Name :</label>
+<input id="name" name="models_Name" placeholder="Paste Model Name here" type="text">
+<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+<input name="userfile" type="file" />
+<input type="submit" onClick="history.go(0)" value="Submit" name="submit"/>
+</form>
+</body>
+</html>
 
 
 <?php
-
 	include 'RfidController.php';
 	$rC = new RfidController();	
 	//isset($_GET['fn']!=="John Doe" )
@@ -22,6 +45,12 @@
 				$nomenclature_Name=$row["nomenclature_Name"];
 		}; 
 	};
+	$query4 = mysqli_query($conn,"select * from storeimages where model_Name='$model_name'");
+	$rows4 = mysqli_num_rows($query4);
+	if ($rows4 == 1) {
+	Echo "<a href=file_display.php?fn=$model_name>Picture of Model</a>";};
+	
+	echo "<br/>";
 	echo "Model Name: ";
 	echo $model_name;
 	echo "<br/>";
@@ -34,30 +63,22 @@
         		
     $model = $rC-> getNewModel();    		
 	$model->createModelView($name);
-	
-	
-	
-?>
-<html>
-<head><title>File Insert</title></head>
-<body>
-<h3>Please Choose a File and click Submit</h3>
 
-<form enctype="multipart/form-data" action=
-"<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
-<input name="userfile" type="file" />
-<input type="submit" value="Submit" />
-</form>
+
+
+
+?>
+
 
 <?php
 // check if a file was submitted
-if(!isset($_FILES['userfile']))
-{
-    echo '<p>Please select a file</p>';
+
+if (empty($_POST['models_Name'])) {
+$error = "Model Name is invalid, Check spelling.";
 }
 else
 {
+
     try {
     $msg= upload();  //this will upload your image
     echo $msg;  //Message showing success or failure.
@@ -67,6 +88,9 @@ else
     echo 'Sorry, could not upload file';
     }
 }
+
+
+
 // the upload function
 function upload() {
     $maxsize = 10000000; //set to approx 10 MB
@@ -93,20 +117,17 @@ function upload() {
                    
 					}
                     // our sql query
-					$name=$_GET['fn'];
-					$sql0 = "SELECT makes.makeName, models.model_name, models.model_id, nomenclature.nomenclature_Name FROM models join makes on models.make_id=makes.make_id join nomenclature on models.nom_id=nomenclature.nomenclature_id WHERE model_id= '$name'";
-					$result0 = $conn->query($sql0);
-					if($result0->num_rows>0){
-						while($row=$result0->fetch_assoc()){
-							$model_name=$row["model_name"];
-							$makeName=$row["makeName"];
-							$nomenclature_Name=$row["nomenclature_Name"];
-						}; 
-					};
+						// Define $models_Name
+					$models_Name=$_POST['models_Name'];
+					// To protect MySQL injection for Security purpose
+					$models_Name = stripslashes($models_Name);
+					$models_Name = mysqli_real_escape_string($conn,$models_Name);
+					// SQL query to fetch information of registerd users and finds user match.
+					$query = mysqli_query($conn,"select * from Models where model_Name='$models_Name'");
                     $sql = "INSERT INTO storeimages
                     (photo, model_Name)
                     VALUES
-                    ('{$imgData}', '{$model_name}');";
+                    ('{$imgData}', '{$models_Name}');";
                     // insert the image
                     $result = $conn->query($sql);
                     if(!$result){
@@ -152,5 +173,3 @@ function file_upload_error_message($error_code) {
     }
 }
 ?>
-</body>
-</html>

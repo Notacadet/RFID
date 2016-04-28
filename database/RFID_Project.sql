@@ -49,14 +49,13 @@ DROP TABLE IF EXISTS `storeimages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE  storeimages (
-    photo_id INT(2) COLLATE UTF8_UNICODE_CI NOT NULL auto_increment,
 	photo LONGBLOB NOT NULL,
-    photo_name VARCHAR(300) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
-	photo_size INT COLLATE UTF8_UNICODE_CI DEFAULT NULL,
-    created_at DATE DEFAULT NULL,
-    updated_at DATE DEFAULT NULL,
-    delete_Boolean tinyint default NULL,
-    PRIMARY KEY (photo_id)
+    model_Name VARCHAR(300) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
+	INDEX model_Name (model_Name),
+    Foreign Key (model_Name)
+		references Models(model_Name)
+        ON DELETE CASCADE,
+    PRIMARY KEY (model_Name)
 )  ENGINE=MYISAM DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,13 +68,12 @@ CREATE TABLE Models (
     model_Name VARCHAR(300) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     make_id INT(3) COLLATE UTF8_UNICODE_CI DEFAULT NULL ,
     nom_id INT(2) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
-	photo LONGBLOB NOT NULL,
-	photo_size INT COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     created_at DATE DEFAULT NULL,
     updated_at DATE DEFAULT NULL,
     seriveLife INT DEFAULT NULL,
     delete_Boolean tinyint default NULL,
 	maintainence_type VARCHAR(10) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
+    maintainenance_information VARCHAR(300) COLLATE UTF8_UNICODE_CI DEFAULT NULL,
     PRIMARY KEY (model_id),
     INDEX make_id (make_id),
     Foreign Key (make_id)
@@ -113,7 +111,6 @@ CREATE TABLE users (
     firstNAme VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
     payGrade VARCHAR(4) COLLATE UTF8_UNICODE_CI NOT NULL,
     pass VARCHAR(40) COLLATE UTF8_UNICODE_CI NOT NULL,
-    user_Type VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
     delete_Boolean tinyint default NULL,
     PRIMARY KEY (user_id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;
@@ -130,7 +127,6 @@ CREATE TABLE admin (
     firstNAme VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
     payGrade VARCHAR(4) COLLATE UTF8_UNICODE_CI NOT NULL,
     pass VARCHAR(40) COLLATE UTF8_UNICODE_CI NOT NULL,
-    user_Type VARCHAR(20) COLLATE UTF8_UNICODE_CI NOT NULL,
     delete_Boolean tinyint default NULL,
     PRIMARY KEY (admin_id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_UNICODE_CI;

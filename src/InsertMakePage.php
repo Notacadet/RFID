@@ -8,7 +8,6 @@
 
 	$make = $rC->getNewMake();
 	$make->generateNewMakeForm();
-	$make->generateDeleteMakeForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
 

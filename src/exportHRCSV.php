@@ -36,7 +36,5 @@ class XCSV{
 		fclose($file);  
 	}
 }
-$testObject = new XCSV();
 
-$testObject->createCSV('Kyle.Moses@usma.edu');
 ?>

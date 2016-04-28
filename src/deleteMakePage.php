@@ -6,8 +6,8 @@
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
 
-	$model = $rC->getNewModel();
-	$model->generateNewModelForm();
+	$make = $rC->getNewMake();
+	$make->generateDeleteMakeForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
 	

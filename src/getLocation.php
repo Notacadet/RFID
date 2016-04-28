@@ -25,7 +25,7 @@ if (!$con) {
 
 mysqli_select_db($con,"rfid_database");
 
-$sql="SELECT locations.roomNumber, locations.location_id, count(items.rfid) as items FROM items left join locations on items.location_id=locations.location_id where roomNumber like '%$inLocation%' group by roomNumber ";
+$sql="SELECT locations.roomNumber, locations.location_id, count(items.rfid) as items FROM items join locations on items.location_id=locations.location_id where roomNumber like '%$inLocation%' and delete_Boolean='0' group by roomNumber ";
 $result = mysqli_query($con,$sql);
 
 echo "<table>

@@ -5,9 +5,10 @@
 	$lastname=$_POST['lastname'];
 	$username=$_POST['username'];
 	$rank=$_POST['rank'];
+	$pass=$_POST['pass'];
 
 	$rC = new RfidController();
 	$users = $rC->getNewUser();
-	$users->insertUser($firstname, $lastname, $username, $rank);
+	$users->insertUser($firstname, $lastname, $username, $rank, $pass);
 
 ?>

@@ -40,7 +40,7 @@ class Nomenclature{
 			echo "Nomenclature Exists";
 		}
 		else{
-			$sql = "INSERT INTO nomenclature(nomenclature_Name,created_at, updated_at) VALUES ('$categoryName',CURDATE(),CURDATE())";
+			$sql = "INSERT INTO nomenclature(nomenclature_Name,created_at, updated_at) VALUES ('$nomName',CURDATE(),CURDATE())";
 			$result = $conn->query($sql) or die('Error querying database');
 			$conn->close();
 			echo "Nomenclature Added";

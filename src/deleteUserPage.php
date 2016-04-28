@@ -6,9 +6,10 @@
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
 
-	$model = $rC->getNewModel();
-	$model->generateNewModelForm();
+	$user = $rC->getNewUser();
+	$user->generateDeleteUserForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
+
 	
 ?>

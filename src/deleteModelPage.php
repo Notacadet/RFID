@@ -7,7 +7,7 @@
 	$header->printHTMLHeader();
 
 	$model = $rC->getNewModel();
-	$model->generateNewModelForm();
+	$model->generateDeleteModelForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
 	

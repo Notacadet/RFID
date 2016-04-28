@@ -6,9 +6,10 @@
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
 
-	$model = $rC->getNewModel();
-	$model->generateNewModelForm();
+	$location = $rC->getNewLocation();
+	$location->generateDeleteLocationForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
+
 	
 ?>

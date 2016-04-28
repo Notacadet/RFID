@@ -15,20 +15,27 @@
 					<div class='dropdown-content'>
 						<a href=liveItem.php>Search by Item</a>
 						<a href=#liveItem.php>Create Item</a>
+						<a href=#>Delete Item</a>
+						<a href=#>Update Item</a>
 					</div>
 				</li>
 				<li class='dropdown'>
 					<a href='#' class='dropbtn'>Makes</a>
 					<div class='dropdown-content'>
-						<a href=#>Create a Make</a>
 						<a href=liveMake.php>Search Make</a>
+						<a href=InsertMakePage.php>Create a Make</a>
+						<a href=#>Delete Make</a>
+						<a href=#>Update Make</a>
 					</div>
 				</li>
 				<li class='dropdown'>
 					<a href='#' class='dropbtn'>Models</a>
 					<div class='dropdown-content'>
-						<a href=InsertModelPage.php>Create a Model</a>
 						<a href=liveModel.php>Search by Model</a>
+						<a href=InsertModelPage.php>Create a Model</a>
+						<a href=#>Delete Model</a>
+						<a href=#>Update Model</a>
+						<a href=addPicture.php>Upload Picture</a>
 					</div>
 				</li>
 				<li class='dropdown'>
@@ -36,15 +43,28 @@
 					<div class='dropdown-content'>
 						<a href=liveUser.php>Search User</a>
 						<a href=insertUserPage.php>Create User</a>
+						<a href=#>Delete User</a>
+						<a href=#>Update User</a>
 					</div>
 				</li>
 				<li><a href=#>Latest Update</a></li>
-				<li><a href=liveLocation.php>Locations</a></li>
+				<li class='dropdown'>
+					<a href='#' class='dropbtn'>Locations</a>
+					<div class='dropdown-content'>
+						<a href=liveLocation.php>Search by Location</a>
+						<a href=insertLocationPage.php>Create Location</a>
+						<a href=#>Delete Location</a>
+						<a href=#>Update Location</a>
+					</div>
+				</li>
+
 				<li class='dropdown'>
 					<a href='#' class='dropbtn'>Nomenclature</a>
 					<div class='dropdown-content'>
 						<a href=liveNomenclature.php>Search by Nomenclature</a>
-						<a href=#>Create Nomenclature</a>
+						<a href=insertNomPage.php>Create Nomenclature</a>
+						<a href=#>Delete Nomenclature</a>
+						<a href=#>Update Nomenclature</a>
 					</div>
 				</li>
 

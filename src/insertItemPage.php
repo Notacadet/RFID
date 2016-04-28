@@ -6,9 +6,10 @@
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
 
-	$model = $rC->getNewModel();
-	$model->generateNewModelForm();
+	$item = $rC->getNewItem();
+	$item->generateNewItemForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
+
 	
 ?>

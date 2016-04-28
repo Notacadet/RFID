@@ -25,7 +25,7 @@ class Make{
 		");
 	}
 	public function generateDeleteMakeForm(){
-		print(" <form action = delMake.php method=post>
+		print(" <br><br><br><form action = delMake.php method=post>
 			Delete Make: <input name=makeName type=text ><br>
 				  <input value=Submit Data type=Submit>
 		</form>
@@ -41,7 +41,7 @@ class Make{
 		}
 		else{
 
-			$sql = "INSERT INTO makes( makeName, created_at, updated_at) VALUES ('$makeName',CURDATE(),CURDATE())";
+			$sql = "INSERT INTO makes( makeName, created_at, updated_at, delete_Boolean) VALUES ('$makeName',CURDATE(),CURDATE(), '0')";
 			$result = $conn->query($sql) or die('Error querying database');
 			$conn->close();
 			echo "New Make Added";
@@ -95,10 +95,10 @@ class Make{
 	public function createMakeView($selectedMake){
 
 		$conn = RfidController::connect();
-		$sql = "SELECT models.model_id, makes.makeName, models.model_name, makes.make_id, nomenclature.nomenclature_id, nomenclature.nomenclature_Name, count(models.model_name) as modName FROM models join makes on models.make_id=makes.make_id join nomenclature on models.nom_id=nomenclature.nomenclature_id join items on models.model_id=items.model_id where makes.make_id = '$selectedMake' group by models.model_name order by nomenclature.nomenclature_name";
+		$sql = "SELECT models.model_id, makes.makeName, models.model_name, makes.make_id, nomenclature.nomenclature_id, nomenclature.nomenclature_Name, users.user_id, count(models.model_name) as modName FROM models join makes on models.make_id=makes.make_id join nomenclature on models.nom_id=nomenclature.nomenclature_id join items on models.model_id=items.model_id join users on items.hrholder_id=users.user_id where makes.make_id = '$selectedMake' and users.user_id != '44' group by models.model_name order by nomenclature.nomenclature_name";
 		$result = $conn->query($sql);
 		if (!$result) {
-    		printf("Error: %s\n", mysqli_error($con));
+    		printf("Error: %s\n", mysqli_error($conn));
     		exit();
 		}
 		echo "<table>

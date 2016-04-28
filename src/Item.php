@@ -3,6 +3,40 @@
 
 class item{
 
+	public function generateNewItemForm(){
+		print(" <br><form action = addNewItem.php method=post>
+			New Item: <input name=rfid type=text id='rfid'><br>
+			Model:<input name=model_Name type=text id='model_Name'><br>
+			Location:<input name=roomNumber type=text id='location'><br>
+			Serial Number: <input name=serialNum type=text id='serialNum'><br>
+			Commments: <input name=comments type text id='comments'><br>
+			Price:<input name=price	type=text id='price'><br>
+			Hand Receipt Holder: <input name=userName type=text id='userName'><br>
+				  <input value=Submit Data type=Submit>
+		</form>
+		");
+		
+	}
+
+	public function insertItem($rfid,$model_Name,  $location,$serialNum, $comments,$price ,$hrHolder){
+		$conn = RfidController::connect();//THIS WORKS
+		$check=mysqli_query($conn, "select * from items where rfid='$rfid'");
+		$checkrows=mysqli_num_rows($check);
+		if($checkrows>0){
+			echo "Item already exists";
+		}
+		else{
+			$sql = "INSERT INTO items (rfid, model_id, location_id, serialNum,  comments, price,  hrholder_id, delete_Boolean) VALUES ('$rfid', (SELECT model_id FROM models WHERE model_Name = '$model_Name'), (SELECT location_id FROM locations WHERE roomNumber = '$location'), '$serialNum', '$comments', '$price', (SELECT user_id FROM users WHERE userName = '$hrHolder'), '0')";
+			$result = $conn->query($sql);
+			if (!$result) {
+   				printf("Error: %s\n", mysqli_error($conn));
+    		exit();
+			}
+			$conn->close();
+			echo "Item added";
+		}
+
+	}
 	public function generateSelectItemForm(){
 		/*print(" <br><br><br><form action = selItem.php method=post>
 			Select Item: <input name=rfid type=text ><br>

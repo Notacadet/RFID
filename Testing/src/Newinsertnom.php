@@ -26,8 +26,10 @@ class insertNom implements NomDAO
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
 		}
-		$sql = "INSERT into nomenclature(make_id, makeName, created_at, updated_at) VALUE(MAX(categoryID)+1, $categoryName,CURDATE(),CURDATE())";
+		$sql = "INSERT INTO 'nomenclature'('nomenclature_Name', 'created_at', 'updated_at') VALUES ('$categoryName',CURDATE(),CURDATE())";
 		$conn->query($sql);
-		echo "Success";
-    }
+		print $sql;
+		echo "Success"; 
+		$conn->close();
+	}
 }

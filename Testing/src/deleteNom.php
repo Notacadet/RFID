@@ -1,8 +1,8 @@
-<?php
+<?php 
 
-class insertProfile implements InsertProfileDAO2
-{
-	public function selectProfile(){
+class deleteNomenclature implements deleteNomDAO{
+
+	public function selectNomenclature($categoryName){
 		$servername = "localhost";
         $username = "root";
         $password = "sqldba";
@@ -11,7 +11,7 @@ class insertProfile implements InsertProfileDAO2
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-		$sql = "SELECT userName,lastName,firstNAme,payGrade FROM users"; //WHERE'delete' = 0 AND  `nomenclature_Name` like '$categoryName%'";
+		$sql = "SELECT nomenclature_id,nomenclature_Name,created_at,updated_at FROM nomenclature WHERE delete_Boolean = '0' AND  nomenclature_Name like '$categoryName%'";
 		$result = $conn->query($sql);
 		if(!$result){
 				die("Didn't Work " . mysqli_error($conn));
@@ -19,15 +19,16 @@ class insertProfile implements InsertProfileDAO2
 		if ($result->num_rows > 0){
 			// output data of each row
    		 	while($row = $result->fetch_assoc()) {
-        		echo "Username: " . $row["userName"]. " - Last Name: " . $row["lastName"]. " First Name:" . $row["firstNAme"]." Grade: ". $row["payGrade"]. "<br>";
+        		echo "ID: " . $row["nomenclature_id"]. " - Name: " . $row["nomenclature_Name"]. " Created:" . $row["created_at"]."Updated:". $row["created_at"]. "<br>";
     		}
 		} 
 		else {
     			echo "0 results";
 		}
 		$conn->close();
-	}
-	public function insertProf($fName,$lName,$rank){//going to need to alter the users table to handle the parameters.
+	}	
+
+	public function deletesNomenclature($catName){// can't implement until delete fields are added to the tables.
 		$servername = "localhost";
         $username = "root";
         $password = "sqldba";
@@ -36,12 +37,11 @@ class insertProfile implements InsertProfileDAO2
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-		$sql = "INSERT INTO `users`(`userName`, `lastName`,`firstNAme`, `payGrade`) VALUES ('$fName'+'.'+'$lName'+'@usma.edu' ,'$lName','$fName','$rank')"; //im assuming here that they have a usma.edu email address
-		$result = $conn->query($sql);
-		if(!$result){
-				die("Didn't Work " . mysqli_error($conn));
-		}
-		else echo "Success";
+		$sql = "UPDATE nomenclature SET delete_Boolean = '1', updated_at = CURDATE() WHERE nomenclature_Name = '$catName'";
+		$conn->query($sql);
+		echo "Success";
+		print $sql;
 		$conn->close();
-	}	
-}	
+	}
+	
+}

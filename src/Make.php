@@ -25,7 +25,7 @@ class Make{
 		");
 	}
 	public function generateDeleteMakeForm(){
-		print(" <form action = delMake.php method=post>
+		print(" <br><br><br><form action = delMake.php method=post>
 			Delete Make: <input name=makeName type=text ><br>
 				  <input value=Submit Data type=Submit>
 		</form>
@@ -34,13 +34,20 @@ class Make{
 	//CRUD Sequence for Make
 	public function insertMake($makeName){
 		$conn = RfidController::connect();//THIS WORKS
-		$sql = "INSERT INTO makes( makeName, created_at, updated_at) VALUES ('$makeName',CURDATE(),CURDATE())";
-		$result = $conn->query($sql);
-		if(!$result){
-			die("Didn't Work " . mysqli_error($conn));//checks for properly formed query only, not input!
+		$check=mysqli_query($conn, "select * from makes where makeName='$makeName'");
+		$checkrows=mysqli_num_rows($check);
+		if($checkrows>0){
+			echo "Make Exists";
 		}
-		else echo "Success";
-		$conn->close();
+		else{
+
+			$sql = "INSERT INTO makes( makeName, created_at, updated_at, delete_Boolean) VALUES ('$makeName',CURDATE(),CURDATE(), '0')";
+			$result = $conn->query($sql) or die('Error querying database');
+			$conn->close();
+			echo "New Make Added";
+		}
+		
+		
 	}
 	public function selectMake($inMake){
 		//
@@ -84,5 +91,41 @@ class Make{
 		}
 		else echo "Success";
 		$conn->close();
-	}	}
+	}
+	public function createMakeView($selectedMake){
+
+		$conn = RfidController::connect();
+		$sql = "SELECT models.model_id, makes.makeName, models.model_name, makes.make_id, nomenclature.nomenclature_id, nomenclature.nomenclature_Name, users.user_id, count(models.model_name) as modName FROM models join makes on models.make_id=makes.make_id join nomenclature on models.nom_id=nomenclature.nomenclature_id join items on models.model_id=items.model_id join users on items.user_id=users.user_id where makes.make_id = '$selectedMake' and users.user_id != '44' group by models.model_name order by nomenclature.nomenclature_name";
+		$result = $conn->query($sql);
+		if (!$result) {
+    		printf("Error: %s\n", mysqli_error($conn));
+    		exit();
+		}
+		echo "<table>
+		<tr>
+		<th>Nomenclature</th>
+		<th>Model Name</th>
+		<th>Total</th>
+		</tr>";
+		
+		if ($result -> num_rows > 0 ){
+				//output data of each row into the Array  
+				while ($row=$result->fetch_assoc()){
+					//$nameArray[]= (string)$row;
+					$selectedMake=$row["make_id"];
+					$selectedModel=$row["model_id"];
+					$selectedNom=$row["nomenclature_id"];
+					echo "<tr>";
+		    		echo "<td><a href=nomLandingPage.php?fn=$selectedNom>" . $row['nomenclature_Name'] . "</td>";
+		    		echo "<td><a href=modelToModel_id.php?fn=$selectedModel>" . $row['model_name'] . "</td>";   		
+		    		echo "<td>" . $row["modName"]."</a></td>";
+		    		echo "</tr>";
+		    	}
+				echo "</table>";
+		}
+		echo "<br/>";
+		$conn->close();
+	}
+
+}
 ?>

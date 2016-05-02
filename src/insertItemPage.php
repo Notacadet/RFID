@@ -5,8 +5,11 @@
 	$rC = new RfidController();
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
-	$nom = $rC->getNewNomenclature();
-	$nom->generateNewNomForm();
+
+	$item = $rC->getNewItem();
+	$item->generateNewItemForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
+
+	
 ?>

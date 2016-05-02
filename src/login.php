@@ -1,3 +1,4 @@
+
 <?php
 error_reporting(E_ALL ^ E_DEPRECATED);
 session_start(); // Starting Session
@@ -12,7 +13,7 @@ else
 $username=$_POST['username'];
 $password=$_POST['password'];
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-$connection = mysqli_connect('localhost','developer','cisco123','RFID_Database');
+$connection = mysqli_connect('localhost','root','sqldba','RFID_Database');
 // To protect MySQL injection for Security purpose
 $username = stripslashes($username);
 $password = stripslashes($password);

@@ -8,10 +8,6 @@
 
 	$model = $rC->getNewModel();
 	$model->generateNewModelForm();
-?>
-
-
-<?php
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
 	

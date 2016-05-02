@@ -27,7 +27,7 @@ if (!$con) {
 
 mysqli_select_db($con,"rfid_database");
 
-$sql="SELECT userName, lastName, firstNAme, payGrade FROM users where lastName like '$inLastname%' and firstNAme like '$inFirstname%' and  payGrade like '$inRank%'";
+$sql="SELECT userName, lastName, firstNAme, payGrade, user_id FROM users where lastName like '$inLastname%' and firstNAme like '$inFirstname%' and  payGrade like '$inRank%' and delete_Boolean = '0' order by lastName";
 $result = mysqli_query($con,$sql);
 
 echo "<table>
@@ -38,8 +38,9 @@ echo "<table>
 <th>Rank</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
+	$selectedUser=$row["user_id"];
     echo "<tr>";
-    echo "<td>" . $row['userName'] . "</td>";
+    echo "<td><a href=emailLandingPage.php?fn=$selectedUser>" . $row['userName'] . "</td>";
     echo "<td>" . $row['lastName'] . "</td>";
     echo "<td>" . $row['firstNAme'] . "</td>";
     echo "<td>" . $row['payGrade'] . "</td>";

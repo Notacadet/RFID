@@ -1,16 +1,17 @@
 <?php 
-//include_once 'RfidController.php';
+include_once 'RfidController.php';
 
 class Model{
 
 	public function generateNewModelForm(){
 		print(" <br><br><br><br><br><br><form action = addNewModel.php method=post>
 			New Model: <input name=modelName type=text id='model'>
-			Make:<input name=makeName type=text id='make' >
-			Nomenclature:<input name=nomName type=text id='nomenclature' ><br>
+			Make:<input name=makeName type=text id='make'>
+			Nomenclature:<input name=nomName type=text id='nomenclature' style='text-transform:uppercase'><br>
 				  <input value=Submit Data type=Submit>
 		</form>
 		");
+		
 	}
 	public function generateSelectModelForm(){
 		print(" <form action = selModel.php method=post>
@@ -27,7 +28,7 @@ class Model{
 		");
 	}
 	public function generateDeleteModelForm(){
-		print(" <form action = delModel.php method=post>
+		print(" <br><br><br><form action = delModel.php method=post>
 			Delete Model: <input name=modelName type=text ><br>
 				  <input value=Submit Data type=Submit>
 		</form>
@@ -70,7 +71,7 @@ class Model{
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
 		}
-		$sql = "UPDATE model SET updated_at = CURDATE() WHERE modelName = $inModel";
+		$sql = "UPDATE model SET updated_at = CURDATE() WHERE model_id = $inModel";
 		$conn->query($sql);
 		echo "Success";
 	}	*/
@@ -83,6 +84,40 @@ class Model{
 				die("Didn't Work " . mysqli_error($conn));
 		}
 		else echo "Success";
+		$conn->close();
+	}
+	
+	public function createModelView($selectedModel){
+
+		$conn = RfidController::connect();
+		$sql = "SELECT items.rfid, items.items_id, items.serialNum, locations.location_id, locations.roomNumber, makes.makeName, models.model_name, models.model_id, users.userName, users.user_id FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join makes on models.make_id=makes.make_id join users on items.user_id=users.user_id where models.model_id = '$selectedModel'";
+		$result = $conn->query($sql);
+		echo "<table>
+		<tr>
+		<th>RFID</th>
+		<th>Serial Number</th>
+		<th>Room Number</th>
+		<th>Hand Receipt Holder</th>	
+		</tr>";
+		while($row = mysqli_fetch_array($result)) {
+			$selectedLocation=$row["location_id"];
+			$selectedItem=$row["items_id"];
+			$selectedUser=$row["user_id"];
+    		echo "<tr>";
+    		echo "<td><a href=itemLandingPage.php?fn=$selectedItem>" . $row['rfid'] . "</td>";
+    		echo "<td>" . $row['serialNum'] . "</td>";
+    		echo "<td><a href=locationLandingPage.php?fn=$selectedLocation>" . $row['roomNumber'] . "</td>";
+    		echo "<td><a href=emailLandingPage.php?fn=$selectedUser>" . $row['userName'] . "</td>";
+    		echo "</tr>";
+    	}
+		echo "</table>";
+
+
+		if (!$result) {
+    		printf("Error: %s\n", mysqli_error($conn));
+    		exit();
+		}
+		echo "<br/>";
 		$conn->close();
 	}
 }

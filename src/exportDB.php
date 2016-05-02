@@ -14,7 +14,7 @@ class XCSV{
 		$dbname = "rfid_database";
 		$conn = new mysqli($servername,$username,$password,$dbname);
 		// Fetch the data
-		$sql = "SELECT users.userName, nomenclature.nomenclature_Name, locations.roomNumber, makes.makeName, models.model_Name, items.rfid, items.serialNum, items.comments, items.accountedFor, items.dateAcquired, items.price, items.pbhrNumber, items.alias, items.HandRecieptSignDate, items.itemStatus, items.last_calibration, items.calibration_due FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join nomenclature on nomenclature.nomenclature_id=models.nom_id join makes on models.make_id=makes.make_id join users on users.user_id=items.user_id WHERE userName like '%$selectedName%' ORDER BY rfid, nomenclature_Name, roomNumber, makeName, model_name";
+		$sql = "SELECT users.userName, nomenclature.nomenclature_Name, locations.roomNumber, makes.makeName, models.model_Name, items.rfid, items.serialNum, items.comments, items.accountedFor, items.dateAcquired, items.price, items.pbhrNumber, items.alias, items.HandRecieptSignDate, items.itemStatus, items.last_calibration, items.calibration_due FROM items join locations on items.location_id=locations.location_id join models on items.model_id=models.model_id join nomenclature on nomenclature.nomenclature_id=models.nom_id join makes on models.make_id=makes.make_id join users on users.user_id=items.hrholder_id WHERE userName like '%$selectedName%' ORDER BY rfid, nomenclature_Name, roomNumber, makeName, model_name";
 		$result = $conn->query($sql);
 		if (!$result){
 			die("Didn't work" . mysqli_error($conn));

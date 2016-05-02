@@ -12,8 +12,8 @@ class Footer {
 ?>
 
 <?php
-include('session.php');
+/*include('session.php');
 
 
-echo $login_session;
+echo $login_session;*/
 ?>

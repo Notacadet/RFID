@@ -25,7 +25,7 @@ if (!$con) {
 
 mysqli_select_db($con,"rfid_database");
 
-$sql="SELECT locations.roomNumber, count(items.rfid) as items FROM items left join locations on items.location_id=locations.location_id where roomNumber like '%$inLocation%' group by roomNumber ";
+$sql="SELECT locations.roomNumber, locations.location_id, count(items.rfid) as items FROM items join locations on items.location_id=locations.location_id where roomNumber like '%$inLocation%' group by roomNumber ";
 $result = mysqli_query($con,$sql);
 
 echo "<table>
@@ -35,8 +35,9 @@ echo "<table>
 <th>Items</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
+	$selectedRoom = $row["location_id"];
     echo "<tr>";
-    echo "<td><a href=#>" . $row['roomNumber'] . "</td>";
+    echo "<td><a href=locationLandingPage.php?fn=$selectedRoom>" . $row['roomNumber'] . "</td>";
     echo "<td>" . $row['items'] . "</td>";
     echo "</tr>";
 }

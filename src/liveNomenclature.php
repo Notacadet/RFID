@@ -67,14 +67,13 @@
 				</li>
 
 			</ul>
-			
-<script type="text/javascript">
-	var roomNumber='';
 
-function showResult(roomNumber) {
+<script type="text/javascript">
+var nomenclature='';
+function showResult(nomenclature) {
 	var xmlhttp;
- 	if (roomNumber.length==0) {
-    	document.getElementById("livesearch").innerHTML='';
+ 	if (nomenclature.length==0) {
+    	document.getElementById("livesearch").innerHTML="";
     	document.getElementById("livesearch").style.border="0px";
   	}
   	if (window.XMLHttpRequest) {
@@ -89,7 +88,7 @@ function showResult(roomNumber) {
       	document.getElementById("livesearch").style.border="1px solid #A5ACB2";
     	}
   	}
-  	xmlhttp.open("GET","getLocation.php?inLocation=" + roomNumber, true);
+  	xmlhttp.open("GET","getNomenclature.php?inNomenclature=" + nomenclature, true);
   	xmlhttp.send();
 }
 
@@ -105,7 +104,7 @@ function showResult(roomNumber) {
 <br>
 <br>
 <form>
-Search Location: <input type="text" size="30" onkeyup="roomNumber=this.value; showResult(roomNumber);">
+Search Nomenclature: <input type="text" size="30" onkeyup="nomenclature=this.value; showResult(nomenclature);">
 </form>
 <div id="livesearch"></div>
 </body>

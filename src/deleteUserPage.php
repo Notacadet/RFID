@@ -5,8 +5,11 @@
 	$rC = new RfidController();
 	$header = $rC->getNewHeader();
 	$header->printHTMLHeader();
-	$nom = $rC->getNewNomenclature();
-	$nom->generateNewNomForm();
+
+	$user = $rC->getNewUser();
+	$user->generateDeleteUserForm();
 	$footer = $rC->getNewFooter();
 	$footer->printHTMLFooter();
+
+	
 ?>

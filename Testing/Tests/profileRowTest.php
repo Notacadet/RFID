@@ -1,7 +1,4 @@
 <?php
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\NomDAO.php";
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Newinsertnom.php";
-
 /*
 class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Extensions_Database_Operation_Truncate
 {
@@ -11,19 +8,18 @@ class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Exte
         parent::execute($connection, $dataSet);
         $connection->getConnection()->query("SET foreign_key_checks = @PHAKE_PREV_foreign_key_checks");
     }
-}
-*/
-class MakeNomTest extends PHPUnit_Extensions_Database_TestCase
+} */
+class ProfileConnectionTest extends PHPUnit_Extensions_Database_TestCase
 {
-     public function getConnection()
+	 public function getConnection()
     {
         $database = 'rfid_database';
         $user = 'root';
         $password = 'sqldba';
-        $pdo = new PDO('mysql:host=127.0.0.1;dbname=rfid_database', $user, $password);
+        $pdo = new PDO('mysql:host=127.0.0.1:3306;dbname=rfid_database', $user, $password);
         return $this->createDefaultDBConnection($pdo, $database);
     }
-    /*
+ /*   
     public function getSetUpOperation() {
         // whether you want cascading truncates
         // set false if unsure
@@ -32,22 +28,18 @@ class MakeNomTest extends PHPUnit_Extensions_Database_TestCase
             new PHPUnit_Extensions_Database_Operation_MySQL55Truncate($cascadeTruncates),
             PHPUnit_Extensions_Database_Operation_Factory::INSERT()
         ));
-    }
-    */
-     protected function getDataSet() 
+    } 
+*/    
+     protected function getDataSet()
     {
-        return $this->createXmlDataSet("nomTest_bool.xml");
+       return $this->createXmlDataSet("profilesl.xml");
     }
 
-    public function testInsertNom() {
-        $nom = new insertNom();
-        $nom->insertNomenclature('PANDA');
-        $resultingTable = $this->getConnection()
-            ->createQueryTable("nomenclature",
-            "SELECT * FROM nomenclature");
-        
-        $expectedTable =  $this->createXmlDataSet("nomTest_bool_insert.xml")
-            ->getTable("nomenclature");
-        $this->assertTablesEqual($expectedTable, $resultingTable);   
+    public function testGetRowCount()
+    {
+        /* $delete = new RfidController()
+           $deleter = $delete->findByID(83)*/
+        $this->assertEquals(85, $this->getConnection()->getRowCount('users'));
     }
 }
+?>

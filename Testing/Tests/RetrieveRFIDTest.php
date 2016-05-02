@@ -1,6 +1,6 @@
 <?php
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\NomDAO.php";
-require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Newinsertnom.php";
+require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\Interfaces\RFIDDAO.php";
+require_once "C:\wamp\bin\php\php5.5.12\Tests\Tests1\src\searchRFID.php";
 
 /*
 class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Extensions_Database_Operation_Truncate
@@ -13,7 +13,7 @@ class PHPUnit_Extensions_Database_Operation_MySQL55Truncate extends PHPUnit_Exte
     }
 }
 */
-class MakeNomTest extends PHPUnit_Extensions_Database_TestCase
+class searchRFIDTest extends PHPUnit_Extensions_Database_TestCase
 {
      public function getConnection()
     {
@@ -23,7 +23,7 @@ class MakeNomTest extends PHPUnit_Extensions_Database_TestCase
         $pdo = new PDO('mysql:host=127.0.0.1;dbname=rfid_database', $user, $password);
         return $this->createDefaultDBConnection($pdo, $database);
     }
-    /*
+/*    
     public function getSetUpOperation() {
         // whether you want cascading truncates
         // set false if unsure
@@ -33,21 +33,19 @@ class MakeNomTest extends PHPUnit_Extensions_Database_TestCase
             PHPUnit_Extensions_Database_Operation_Factory::INSERT()
         ));
     }
-    */
+ */   
      protected function getDataSet() 
     {
-        return $this->createXmlDataSet("nomTest_bool.xml");
+        return $this->createXmlDataSet("profiles2.xml");
     }
 
-    public function testInsertNom() {
-        $nom = new insertNom();
-        $nom->insertNomenclature('PANDA');
+    public function testRetrieveRFID() {
         $resultingTable = $this->getConnection()
-            ->createQueryTable("nomenclature",
-            "SELECT * FROM nomenclature");
+            ->createQueryTable("items",
+            "SELECT * FROM items");
         
-        $expectedTable =  $this->createXmlDataSet("nomTest_bool_insert.xml")
-            ->getTable("nomenclature");
+        $expectedTable =  $this->createXmlDataSet("items.xml")
+            ->getTable("items");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }
 }

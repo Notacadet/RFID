@@ -36,7 +36,7 @@ class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
     */
      protected function getDataSet() 
     {
-       return $this->createXmlDataSet("nomTest.xml");
+       return $this->createXmlDataSet("nomTest_bool.xml");
     }
 
     public function testInsertNom() {
@@ -44,7 +44,7 @@ class RetreiveNomTest extends PHPUnit_Extensions_Database_TestCase
             ->createQueryTable("nomenclature",
             "SELECT * FROM nomenclature");
         
-        $expectedTable =  $this->createXmlDataSet("nomTest.xml")
+        $expectedTable =  $this->createXmlDataSet("nomTest_bool.xml")
             ->getTable("nomenclature");
         $this->assertTablesEqual($expectedTable, $resultingTable);   
     }
